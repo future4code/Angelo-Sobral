@@ -66,3 +66,12 @@ table img {
 .wOutColor {
     background: #ececec;
 }
+
+footer {
+    width: 100%;
+    background: chocolate;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    background-color: royalblue;
+}
