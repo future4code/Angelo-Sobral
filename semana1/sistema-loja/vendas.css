@@ -39,39 +39,83 @@
     font-weight: 600;
 }
 
-a:hover {
+.navContent a:hover {
     background-color: rgb(86, 125, 243);
 }
 
-/* Tabela de estoque ========================== */
+/* Lista de estoque ========================== */
 
-table {
-    width: 80%;
+main {
+    width: 100%;
     text-align: center;
+    min-height: 70vh;
+}
+
+.form {
+    padding-bottom: 20px;
+}
+
+.form h2 {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.form a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: royalblue;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.form a:hover {
+    background-color: rgb(86, 125, 243);
+}
+
+.form label {
+    font-weight: 500;
+}
+
+.products {
+    width: 50%;
     margin: 0 auto;
-    border-spacing: 0;
-    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
 }
 
-h2 {
-    text-align: center;
-    padding: 10px 0;
+.products li {
+    border: 2px solid royalblue ;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 0 10px;
+    height: 100px;
+}
+img {
+    max-width: 50px;
 }
 
-table th {
-    background-color: #ececec;
-    padding: 10px 0;
+.payment {
+    margin: 20px 0;
 }
 
-table img {
-    max-width: 100px;
+.payment h2 {
+    margin: 10px 0;
 }
 
-.wOutColor {
-    background: #ececec;
+.payment label {
+    margin-right: 10px;
 }
+
+/* footer =============================== */
 
 footer {
+    position: relative;
+    bottom: 0;
     width: 100%;
     background: chocolate;
     text-align: center;
