@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho ========================== */
+
+header {
+    width: 100%;
+    background: url(https://photos.enjoei.com.br/public/1176x200/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9oZWFkZXJzLzYwOTA3MjIvOWY1MjAxNmJmYmEwMjgyZWY0ZjdhM2JhNWM3YzhlZDcuanBn);
+    background-size: cover;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, .8);
+    border-radius: 0 0 50px 50px;
+}
+
+header h1 {
+    color: whitesmoke;
+}
+
+header p {
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+/* Navegação dos links ======================== */
+
+main {
+    width: 100%;
+    text-align: center;
+    padding: 78px 0;
+}
+
+.navContent {
+    background:#ececec;
+    height: 200px;
+    padding: 25px;
+}
+
+.navContent a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: royalblue;
+    border-radius: 5px;
+    margin: 0 30px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+.description {
+    width: 830px;
+    margin: 20px auto;
+}
+
+.description p {
+    font-weight: 400;
+    text-align: justify;
+}
+
+/* Rodapé ================== */
+
+footer {
+    text-align: center;
+    width: 100%;
+    background: url(https://photos.enjoei.com.br/public/1176x200/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9oZWFkZXJzLzYwOTA3MjIvOWY1MjAxNmJmYmEwMjgyZWY0ZjdhM2JhNWM3YzhlZDcuanBn);
+    background-size: cover;
+    padding: 40px 0;
+    border-radius: 50px 50px 0 0 ;
+}
+
+footer img {
+    max-width: 50px;
+}
+
+footer p {
+    padding: 5px;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+footer a {
+    margin: 0 20px;
+}
+

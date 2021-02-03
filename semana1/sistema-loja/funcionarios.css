@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho ======================= */
+
+.header {
+    background: url(https://photos.enjoei.com.br/public/1176x200/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9oZWFkZXJzLzYwOTA3MjIvOWY1MjAxNmJmYmEwMjgyZWY0ZjdhM2JhNWM3YzhlZDcuanBn);
+    background-size: cover;
+    padding: 20px;
+    text-align: center;
+}
+
+.header p {
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Navegação de links =============================== */
+
+.navContent {
+    background:#ececec;
+    padding: 25px;
+    text-align: center;
+}
+
+.navContent a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: royalblue;
+    border-radius: 5px;
+    margin: 5px 30px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+/* Formulário de estoque ============================== */
+
+h2 {
+    text-align: center;
+    padding: 10px 0;
+}
+
+ul {
+    text-align: center;
+}
+
+ul li {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: chocolate;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    background-color: royalblue;
+}

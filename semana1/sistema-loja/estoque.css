@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho ========================== */
+
+.header {
+    padding: 20px;
+    text-align: center;
+    background: url(https://photos.enjoei.com.br/public/1176x200/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9oZWFkZXJzLzYwOTA3MjIvOWY1MjAxNmJmYmEwMjgyZWY0ZjdhM2JhNWM3YzhlZDcuanBn);
+    background-size: cover;
+}
+
+.header p {
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Navegação dos links ======================== */
+
+.navContent {
+    background:#ececec;
+    padding: 25px;
+    text-align: center;
+}
+
+.navContent a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: royalblue;
+    border-radius: 5px;
+    margin: 5px 30px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+/* Tabela de estoque ========================== */
+
+table {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    border-spacing: 0;
+    margin-bottom: 40px;
+}
+
+h2 {
+    text-align: center;
+    padding: 10px 0;
+}
+
+table th {
+    background-color: #ececec;
+    padding: 10px 0;
+}
+
+table img {
+    max-width: 100px;
+}
+
+.wOutColor {
+    background: #ececec;
+}
+
+footer {
+    width: 100%;
+    background: chocolate;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    background-color: royalblue;
+}
