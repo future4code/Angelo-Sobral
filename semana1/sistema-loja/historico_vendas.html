@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="historico.css">
+    <title>Histórico de Vendas</title>
+</head>
+<body>
+    <div class="header">
+        <p>Bazar Galático <br>Histórico de Vendas</p>
+    </div>
+    
+    <div class="navContent">
+        <a href="./index.html">Página Inicial</a>
+        <a href="./ctrl-estoque.html">Controle de Estoque</a>
+        <a href="./add-produto.html">Adicionar Produto</a>
+        <a href="./funcionarios.html">Funcionários</a>
+        <a class="link" href="./vendas.html">Vendas</a>
+    </div>
+
+    <main>
+        <div class="form">
+            <h2>Histórico Interplanetário de Vendas</h2>
+            <label for="search">Histórico por data</label>
+            <input type="date" name="search" id="search">
+            <label for="seller">Histórico por vendedores</label>
+            <select name="seller" id="seller">
+                <option value="Floki">Floki Jr. - Vendedor Astral</option>
+                <option value="Amora">Amora Albuquerque - Vendedora Estelar</option>
+                <option value="Papyrus">Papyrus Plutones - Vendedor Astral</option>
+            </select>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Valor (R$)</th>
+                    <th>Funcionário</th>
+                </tr>
+            </thead>    
+            
+            <tbody>
+                <tr>
+                    <td>03/01/2021</td>
+                    <td>11:23</td>
+                    <td>9.000,00</td>
+                    <td>Floki Jr. - Vendedor Astral</td>
+                </tr>
+        
+                <tr>
+                    <td>03/01/2021</td>
+                    <td>17:30</td>
+                    <td>12.000,00</td>
+                    <td>Floki Jr. - Vendedor Astral</td>
+                </tr>
+        
+                <tr>
+                    <td>07/01/2021</td>
+                    <td>08:43</td>
+                    <td>80.000,00</td>
+                    <td>Amora Albuquerque - Vendedora Estelar</td>
+                </tr>
+        
+                <tr>
+                    <td>07/01/2021</td>
+                    <td>13:57</td>
+                    <td>45.000,00</td>
+                    <td>Papyrus Plutones - Vendedor Astral</td>
+                </tr>
+            </tbody>
+    </main>
+
+    <footer id="footer">
+        <p>Todos os direitos reservados!</p>
+    </footer>
+</body>
+</html>

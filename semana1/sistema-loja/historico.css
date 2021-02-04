@@ -25,6 +25,7 @@
 .navContent {
     background:#ececec;
     padding: 25px;
+
     text-align: center;
 }
 
@@ -39,39 +40,66 @@
     font-weight: 600;
 }
 
-a:hover {
+.navContent a:hover {
     background-color: rgb(86, 125, 243);
 }
 
-/* Tabela de estoque ========================== */
+/* Lista de estoque ========================== */
+
+main {
+    width: 100%;
+    text-align: center;
+    min-height: 70vh;
+}
+
+.form {
+    width: 80%;
+    margin: 20px auto;
+
+}
+
+.form h2 {
+    margin-bottom: 10px;
+}
+
+.form input {
+    margin-right: 20px;
+}
 
 table {
-    width: 80%;
-    text-align: center;
+    cursor: pointer;
+    width: 60%;
     margin: 0 auto;
-    border-spacing: 0;
-    margin-bottom: 40px;
-}
-
-h2 {
-    text-align: center;
-    padding: 10px 0;
-}
-
-table th {
     background-color: #ececec;
-    padding: 10px 0;
+    border-spacing: 0;
 }
 
-table img {
-    max-width: 100px;
+thead tr {
+    background-color: whitesmoke;
 }
 
-.wOutColor {
-    background: #ececec;
+tr:nth-child(2n) {
+    background-color: whitesmoke;
 }
 
-footer {
+tbody tr:hover {
+    opacity: .7;
+}
+
+td:last-child {
+    width: 40%;
+}
+
+td, th {
+    padding: 10px;
+}
+
+
+/* footer =============================== */
+
+#footer {
+    position: fixed;
+    bottom: 0;
     width: 100%;
     background: chocolate;
     text-align: center;
