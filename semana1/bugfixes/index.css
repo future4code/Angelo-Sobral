@@ -40,7 +40,7 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    display: inline-block;
 }
 
 .botao-amarelo {
@@ -78,15 +78,15 @@ div>p:first-child {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 50px;
+}
+
+#container-de-descricao p {
+    margin-top: 10%;
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
-}
-
-#container-de-descricao>ol li {
-    text-align: center;
+    list-style-position: inside;
 }
 
 #container-para-comprar {
@@ -111,10 +111,15 @@ div:last-child {
     text-align: center;
 }
 
+.divBack {
+    margin: 7% auto;
+    text-align: center;
+}
+
 table {
     width: 60%;
     text-align: center;
-    ar
+    margin: 0 auto;
 }
 
 table img {
