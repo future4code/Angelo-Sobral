@@ -30,6 +30,11 @@ button:focus {
     color: white;
 }
 
+button, a {
+    outline: none;
+    text-decoration: none;
+}
+
 img {
     width: 100px;
 }
@@ -73,11 +78,15 @@ div>p:first-child {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+}
+
+#container-de-descricao>ol li {
+    text-align: center;
 }
 
 #container-para-comprar {
@@ -105,6 +114,7 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    ar
 }
 
 table img {
@@ -132,6 +142,13 @@ td button:hover {
     height: 100px;
 }
 
+.icone:hover {
+    opacity: .5;
+}
+
+.icone:active {
+    opacity: 1;
+}
 
 #back-button {
     background-color: white;
