@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página home                  /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+
+/* estilização do cabelçalho ================================= */
+
+header {
+    width: 100%;
+    padding: 1.2rem 4rem;
+    position: relative;
+    border-bottom: 1px solid #12b4b9;
+}
+
+header .logo, nav, ul, li {
+    display: inline-block;
+    list-style: none;
+}
+
+header nav a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    color: #12b4b9;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+header a:hover {
+    color: #0f8e92;
+}
+
+header a:focus, header a:active {
+    color: #0f8e92;
+}
+
+nav {
+    position: absolute;
+    right: 4rem;
+    top: 1.4rem;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #12b4b9;
+}
+
+/* estilização do conteúdo principal ===================================== */
+
+.main {
+    padding: 1.2rem 4rem;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.mainContent {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    height: 300px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-bottom: 2px solid #0f8e92;
+    box-shadow: -2px -1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.mainContent span {
+    color: #12b4b9;
+    font-size: 1.8rem;
+}
+
+.mainContent p {
+    font-weight: 500;
+    color: #353535;
+}
+
+.mainContent h2 {
+    padding: 1rem 0;
+}
+
+.mainContent li {
+    display: block;
+    padding: 0 1rem;
+    font-weight: 500;
+    color: #353535;
+}
+
+.button {
+    position: absolute;
+    margin: 0 auto;
+    display: block;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    border-radius: .3rem;
+    padding: .5rem 1.2rem;
+    text-decoration: none;
+    background-color: #0f8e92;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #12b4b9;
+}
+
+/* estilização das .softSkills e .hardSkills ================================== */
+
+.skills {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    height: 300px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-top: 2px solid #0f8e92;
+    box-shadow: 2px 1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.hardSkills h1 {
+    margin-bottom: 1.2rem;
+}
+
+.hardSkills img {
+    max-width: 7rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.softSkills {
+    padding-bottom: 1.2rem;
+}
+
+.softSkills h1 {
+    
+    padding-bottom: .5rem;
+}
+
+.softSkills li {
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+
+
+
+/* estilização do rodapé ================================================== */
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #0f8e92;
+    text-align: center;
+}
+
+.socialMedia img {
+    width: 1.8rem;
+    margin: 0 .8rem;
+    padding: .5rem 0 .2rem 0;
+    opacity: .8;
+    filter: invert(1);
+}
+
+.socialMedia img:hover {
+    filter: invert(0);
+}
