@@ -316,10 +316,60 @@ footer {
 /                                /
 / / / / / / / / / / / / / / / /  / */
 
-.contact
+.contact {
+    width: 100%;
+    text-align: center;
+    padding: 3.25rem 4rem;
+}
 
+form {
+    padding: 1.2rem;
+    width: 400px;
+    height: 400px;
+    background-color: #12b4b9;
+    margin: 0 auto;
+    font-weight: 500;
+    border-radius: .3rem;
+}
 
+form h1 {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    color: whitesmoke;
+}
 
+form label {
+    color: white;
+}
+
+form input {
+    display: block;
+    margin: .4rem auto;
+    width: 60%;
+}
+
+form input::placeholder {
+    text-align: center;
+}
+
+button {
+    margin-top: 1.2rem;
+    padding: .5rem 2.5rem;
+    outline: none;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .3rem;
+    color: #0f8e92;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    color: whitesmoke;
+    background-color: #0f8e92;
+    border: 2px solid whitesmoke;
+}
 
 
 
