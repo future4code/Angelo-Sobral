@@ -138,6 +138,7 @@ main {
     border-top: 2px solid #0f8e92;
     box-shadow: 2px 1px 6px #0f8e924d;
     border-radius: .5rem;
+    text-align: center;
 }
 
 .hardSkills h1 {
@@ -156,24 +157,36 @@ main {
 
 .softSkills h1 {
     
-    padding-bottom: .5rem;
+    padding: .5rem 0;
 }
 
 .softSkills li {
     font-weight: 500;
-    padding: 0 1rem;
+    padding: .7rem 1rem;
 }
 
+.softSkills a {
+    text-decoration: none;
+    color: #353535;
+}
 
+.softSkills a:hover {
+    color: #0f8e92;
+    font-size: 1rem;
+}
 
 
 /* estilização do rodapé ================================================== */
 
 footer {
-
     width: 100%;
     background-color: #0f8e92;
     text-align: center;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
 }
 
 .socialMedia img {
@@ -215,6 +228,8 @@ footer {
 
 .journeyContent p {
     margin: 1rem 0 1rem 1rem;
+    color: #353535;
+    font-weight: 500;
 }
 
 .journeyContent span {
@@ -236,11 +251,78 @@ footer {
 }
 
 .schools h1 {
-    padding-bottom: 1.2rem;
+    padding-bottom: 1rem;
     color: #12b4b9;
+    text-align: center;
 }
 
 .hardSkillsWho h1, .jobs h1 {
     padding: 1.2rem 0;
     color: #12b4b9;
+    text-align: center;
 }
+
+.hardSkillsWho p, .schools p, .jobs p {
+    color: #353535;
+    font-weight: 500;
+}
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página portfolio             /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+.cardProject {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    min-height: 406px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-top: 2px solid #0f8e92;
+    box-shadow: 2px 1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.cardProject img {
+    max-width: 100%;
+    margin-bottom: .6rem;
+}
+
+.cardProject p {
+    text-align: center;
+    padding-top: .6rem;
+    color: #353535;
+    font-weight: 500;
+    border-top: 1px solid #0f8e92;
+}
+
+.cardProject a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #353535;
+}
+
+.cardProject a:hover {
+    color: #0f8e92;
+}
+
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página contato               /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+.contact
+
+
+
+
+
+
+
+
+
