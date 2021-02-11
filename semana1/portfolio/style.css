@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página home                  /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+
+/* estilização do cabelçalho ================================= */
+
+header {
+    width: 100%;
+    padding: 1.2rem 4rem;
+    position: relative;
+    border-bottom: 1px solid #12b4b9;
+}
+
+header .logo, nav, ul, li {
+    display: inline-block;
+    list-style: none;
+}
+
+header nav a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    color: #12b4b9;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+header a:hover {
+    color: #0f8e92;
+}
+
+header a:active {
+    color: #12b4b9;
+}
+
+nav {
+    position: absolute;
+    right: 4rem;
+    top: 1.4rem;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #12b4b9;
+}
+
+/* estilização do conteúdo principal ===================================== */
+
+main {
+    min-height: 100%;
+}
+
+.main {
+    padding: 1.2rem 4rem;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.mainContent {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    height: 300px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-bottom: 2px solid #0f8e92;
+    box-shadow: -2px -1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.mainContent span {
+    color: #12b4b9;
+    font-size: 1.8rem;
+}
+
+.mainContent p {
+    font-weight: 500;
+    color: #353535;
+}
+
+.mainContent h2 {
+    padding: 1rem 0;
+}
+
+.mainContent li {
+    display: block;
+    padding: 0 1rem;
+    font-weight: 500;
+    color: #353535;
+}
+
+.button {
+    position: absolute;
+    margin: 0 auto;
+    display: block;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    border-radius: .3rem;
+    padding: .5rem 1.2rem;
+    text-decoration: none;
+    background-color: #0f8e92;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #12b4b9;
+}
+
+/* estilização das .softSkills e .hardSkills ================================== */
+
+.skills {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    height: 300px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-top: 2px solid #0f8e92;
+    box-shadow: 2px 1px 6px #0f8e924d;
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.hardSkills h1 {
+    margin-bottom: 1.2rem;
+}
+
+.hardSkills img {
+    max-width: 7rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.softSkills {
+    padding-bottom: 1.2rem;
+}
+
+.softSkills h1 {
+    
+    padding: .5rem 0;
+}
+
+.softSkills li {
+    font-weight: 500;
+    padding: .7rem 1rem;
+}
+
+.softSkills a {
+    text-decoration: none;
+    color: #353535;
+}
+
+.softSkills a:hover {
+    color: #0f8e92;
+    font-size: 1rem;
+}
+
+
+/* estilização do rodapé ================================================== */
+
+footer {
+    width: 100%;
+    background-color: #0f8e92;
+    text-align: center;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+}
+
+.socialMedia img {
+    width: 1.8rem;
+    margin: 0 .8rem;
+    padding: .5rem 0 .2rem 0;
+    opacity: .8;
+    filter: invert(1);
+}
+
+.socialMedia img:hover {
+    filter: invert(0);
+}
+
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página quemSoul                  /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+.journeyContent {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    min-height: 406px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-bottom: 2px solid #0f8e92;
+    box-shadow: -2px -1px 6px #0f8e924d;
+    border-radius: .5rem;
+} 
+
+.journeyContent h1 {
+    text-align: center;
+    color: #12b4b9;
+}
+
+.journeyContent p {
+    margin: 1rem 0 1rem 1rem;
+    color: #353535;
+    font-weight: 500;
+}
+
+.journeyContent span {
+    color: #12b4b9;
+    font-weight: 700;
+}
+
+.experience {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    min-height: 406px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-top: 2px solid #0f8e92;
+    box-shadow: 2px 1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.schools h1 {
+    padding-bottom: 1rem;
+    color: #12b4b9;
+    text-align: center;
+}
+
+.hardSkillsWho h1, .jobs h1 {
+    padding: 1.2rem 0;
+    color: #12b4b9;
+    text-align: center;
+}
+
+.hardSkillsWho p, .schools p, .jobs p {
+    color: #353535;
+    font-weight: 500;
+}
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página portfolio             /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+.cardProject {
+    display: inline-block;
+    margin: 2rem;
+    position: relative;
+    min-height: 406px;
+    width: 45%;
+    padding: 1.2rem;
+    border: none;
+    border-top: 2px solid #0f8e92;
+    box-shadow: 2px 1px 6px #0f8e924d;
+    border-radius: .5rem;
+}
+
+.cardProject img {
+    max-width: 100%;
+    margin-bottom: .6rem;
+}
+
+.cardProject p {
+    text-align: center;
+    padding-top: .6rem;
+    color: #353535;
+    font-weight: 500;
+    border-top: 1px solid #0f8e92;
+}
+
+.cardProject a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #353535;
+}
+
+.cardProject a:hover {
+    color: #0f8e92;
+}
+
+
+/* / / / / / / / / / / / / / /  / / /
+/                                /
+/   página contato               /
+/                                /
+/ / / / / / / / / / / / / / / /  / */
+
+.contact {
+    width: 100%;
+    text-align: center;
+    padding: 3.25rem 4rem;
+}
+
+form {
+    padding: 1.2rem;
+    width: 400px;
+    height: 400px;
+    background-color: #12b4b9;
+    margin: 0 auto;
+    font-weight: 500;
+    border-radius: .3rem;
+}
+
+form h1 {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    color: whitesmoke;
+}
+
+form label {
+    color: white;
+}
+
+form input {
+    display: block;
+    margin: .4rem auto;
+    width: 60%;
+}
+
+form input::placeholder {
+    text-align: center;
+}
+
+button {
+    margin-top: 1.2rem;
+    padding: .5rem 2.5rem;
+    outline: none;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .3rem;
+    color: #0f8e92;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    color: whitesmoke;
+    background-color: #0f8e92;
+    border: 2px solid whitesmoke;
+}
+
+
+
+
+
+
