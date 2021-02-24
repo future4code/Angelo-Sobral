@@ -87,13 +87,35 @@
 // 2.
 const client = prompt('Informe seu nome completo por favor:')
 let typeMatch = prompt('Informe o tipo de partida que deseja assistir, sendo IN para internacional e DO para doméstico:')
-let gameStage = prompt('Informe qual etapa do jogo deseja adquirir os ingressos, sendo SF para semi-final; DT para decisão de terceiro lugar; e FI para final:')
-let category = prompt('Informe o tipo de categoria que deseja adquirir os ingressos, sendo 1 para primeira fila, 2, 3 e 4 para segunda, terceira e última fila:')
-let ticket = Number(prompt('Informe quanto ingressos você deseja comprar:'))
-let price
-let total = price*ticket
 
-if (typeMatch === 'DO' && gameStage === 'SF') {
+if (typeMatch === 'IN') {
+    typeMatch = 'Internacional'
+} else if (typeMatch === 'DO') {
+    typeMatch = 'Nacional'
+}
+
+let gameStage = prompt('Informe qual etapa do jogo deseja adquirir os ingressos, sendo SF para semi-final; DT para decisão de terceiro lugar; e FI para final:')
+
+if (gameStage === 'SF') {
+    gameStage = 'Semi-final'
+} else if (gameStage === 'DT') {
+    gameStage = 'Decisão de terceiro lugar'
+} else if (gameStage === 'FI') {
+    gameStage = 'Final'
+}
+
+let category = prompt('Informe o tipo de categoria que deseja adquirir os ingressos, sendo 1 para primeira fila, 2, 3 e 4 para segunda, terceira e última fila:')
+
+let ticket = Number(prompt('Informe quanto ingressos você deseja comprar:'))
+
+let infoBuy = '---Dados da compra---'
+
+let infoPay = '---Valores---'
+
+let price
+
+
+if (typeMatch === 'Nacional' && gameStage === 'Semi-final') {
     switch (category) {
     case "1":
     price = 1320
@@ -110,7 +132,7 @@ if (typeMatch === 'DO' && gameStage === 'SF') {
     }
 }
 
-if (typeMatch === 'DO' && gameStage === 'DT') {
+if (typeMatch === 'Nacional' && gameStage === 'Decisão de terceiro lugar') {
     switch (category) {
     case "1":
     price = 660
@@ -127,7 +149,7 @@ if (typeMatch === 'DO' && gameStage === 'DT') {
     }
 }
 
-if (typeMatch === 'DO' && gameStage === 'FI') {
+if (typeMatch === 'Nacional' && gameStage === 'Final') {
     switch (category) {
     case "1": 
     price = 1980
@@ -144,7 +166,7 @@ if (typeMatch === 'DO' && gameStage === 'FI') {
     }
 }
 
-if (typeMatch === 'IN' && gameStage === 'SF') {
+if (typeMatch === 'Internacional' && gameStage === 'Semi-final') {
     let dollar = 4.1
     switch (category) {
     case "1":
@@ -162,7 +184,7 @@ if (typeMatch === 'IN' && gameStage === 'SF') {
     }
 }
 
-if (typeMatch === 'IN' && gameStage === 'DT') {
+if (typeMatch === 'Internacional' && gameStage === 'Decisão de terceiro lugar') {
     let dollar = 4.1
     switch (category) {
     case "1":
@@ -180,7 +202,7 @@ if (typeMatch === 'IN' && gameStage === 'DT') {
     }
 }
 
-if (typeMatch === 'IN' && gameStage === 'FI') {
+if (typeMatch === 'Internacional' && gameStage === 'Final') {
     let dollar = 4.1
     switch (category) {
     case "1": 
@@ -197,3 +219,16 @@ if (typeMatch === 'IN' && gameStage === 'FI') {
     break;
     }
 }
+
+let total = price*ticket
+
+console.log(infoBuy)
+console.log('Nome do cliente:',client)
+console.log('Tipo de jogo:', typeMatch)
+console.log('Etapa do jogo:', gameStage)
+console.log('Categoria:', category)
+console.log(infoPay)
+console.log('Quantidade de ingressos:', ticket)
+console.log('Valor do ingresso:', price)
+console.log('Valor total:', total)
+
