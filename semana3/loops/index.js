@@ -49,7 +49,20 @@
 // console.log(arrayOriginal)
 
 // e)
-// não entendi a questão
+const arrayOriginal = [1,2,3,4,5,6,7,8,9,10]
+
+let valorMaximo = 0
+let valorMinimo = arrayOriginal[0]
+
+for (let numero of arrayOriginal) {
+    if (numero > valorMaximo) {
+        valorMaximo = numero
+    } else if (numero < valorMinimo) {
+        valorMinimo = numero
+    }
+}
+
+console.log(`o maior número é: ${valorMaximo} e o menor número é ${valorMinimo}`)
 
 
 
@@ -62,36 +75,36 @@
 // verificar se o numero eh o certo e retornar acertou
 // se o numero não for o certo, informar que errou dando dica se eh maior ou menor ate acertar
 // informar a quantidade de tentativas até acertar
-const numberPlayer1 = Number(prompt('Vamos jogar? Nesse jogo você será o jogador 1. Digite um número para que o jogador 2 possa advihar. Ah! Não se preocupe! Não vamos mostrar para ele. ^^'))
+// const numberPlayer1 = Number(prompt('Vamos jogar? Nesse jogo você será o jogador 1. Digite um número para que o jogador 2 possa advihar. Ah! Não se preocupe! Não vamos mostrar para ele. ^^'))
 
-console.log('Vamos jogar!')
+// console.log('Vamos jogar!')
 
-const attempts = []
+// const attempts = []
 
-let tryPlayer2 = Number(prompt('Jogador 2 tente acertar o numero:'))
-console.log('O número chutado foi:', tryPlayer2)
+// let tryPlayer2 = Number(prompt('Jogador 2 tente acertar o numero:'))
+// console.log('O número chutado foi:', tryPlayer2)
 
-if (tryPlayer2 < numberPlayer1) {
-    console.log('Errou, o número é maior')
-} else if (tryPlayer2 > numberPlayer1) {
-    console.log('Errou, o número é menor')
-}
+// if (tryPlayer2 < numberPlayer1) {
+//     console.log('Errou, o número é maior')
+// } else if (tryPlayer2 > numberPlayer1) {
+//     console.log('Errou, o número é menor')
+// }
 
-attempts.push(tryPlayer2)
+// attempts.push(tryPlayer2)
 
-for (i =0; i < attempts.length; i++) {
-    if (attempts[i] != numberPlayer1) {
-        let tryPlayer2 = Number(prompt('Jogador 2 tente acertar o numero:'))
-        console.log('O número chutado foi:', tryPlayer2)
-        if (tryPlayer2 < numberPlayer1) {
-            console.log('Errou, o número é maior')
-        } else if (tryPlayer2 > numberPlayer1) {
-            console.log('Errou, o número é menor')
-        }        
-        attempts.push(tryPlayer2)
-    } else if (attempts[i] = numberPlayer1) {
-        console.log('Acertou!!!')
-        console.log(`O número de tentativas foi: ${attempts.length}`)
-    }
-}
+// for (i =0; i < attempts.length; i++) {
+//     if (attempts[i] != numberPlayer1) {
+//         let tryPlayer2 = Number(prompt('Jogador 2 tente acertar o numero:'))
+//         console.log('O número chutado foi:', tryPlayer2)
+//         if (tryPlayer2 < numberPlayer1) {
+//             console.log('Errou, o número é maior')
+//         } else if (tryPlayer2 > numberPlayer1) {
+//             console.log('Errou, o número é menor')
+//         }        
+//         attempts.push(tryPlayer2)
+//     } else if (attempts[i] = numberPlayer1) {
+//         console.log('Acertou!!!')
+//         console.log(`O número de tentativas foi: ${attempts.length}`)
+//     }
+// }
 
