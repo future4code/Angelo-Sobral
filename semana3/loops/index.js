@@ -49,20 +49,20 @@
 // console.log(arrayOriginal)
 
 // e)
-const arrayOriginal = [1,2,3,4,5,6,7,8,9,10]
+// const arrayOriginal = [1,2,3,4,5,6,7,8,9,10]
 
-let valorMaximo = 0
-let valorMinimo = arrayOriginal[0]
+// let valorMaximo = 0
+// let valorMinimo = arrayOriginal[0]
 
-for (let numero of arrayOriginal) {
-    if (numero > valorMaximo) {
-        valorMaximo = numero
-    } else if (numero < valorMinimo) {
-        valorMinimo = numero
-    }
-}
+// for (let numero of arrayOriginal) {
+//     if (numero > valorMaximo) {
+//         valorMaximo = numero
+//     } else if (numero < valorMinimo) {
+//         valorMinimo = numero
+//     }
+// }
 
-console.log(`o maior número é: ${valorMaximo} e o menor número é ${valorMinimo}`)
+// console.log(`o maior número é: ${valorMaximo} e o menor número é ${valorMinimo}`)
 
 
 
@@ -108,3 +108,37 @@ console.log(`o maior número é: ${valorMaximo} e o menor número é ${valorMini
 //     }
 // }
 
+// 2.
+
+const numberIA = Math.floor(Math.random()*100 +1)
+
+console.log('Agora o jogo mudou. Quem vai dizer o número é nossa IA. Bem vindo a era das máquinas! Vamos jogar!')
+
+const attempts = []
+
+let tryPlayer2 = Number(prompt('Jogador tente acertar o numero:'))
+console.log('O número chutado foi:', tryPlayer2)
+
+if (tryPlayer2 < numberIA) {
+    console.log('Errou, o número é maior')
+} else if (tryPlayer2 > numberIA) {
+    console.log('Errou, o número é menor')
+}
+
+attempts.push(tryPlayer2)
+
+for (i =0; i < attempts.length; i++) {
+    if (attempts[i] != numberIA) {
+        let tryPlayer2 = Number(prompt('Jogador tente acertar o numero:'))
+        console.log('O número chutado foi:', tryPlayer2)
+        if (tryPlayer2 < numberIA) {
+            console.log('Errou, o número é maior')
+        } else if (tryPlayer2 > numberIA) {
+            console.log('Errou, o número é menor')
+        }        
+        attempts.push(tryPlayer2)
+    } else if (attempts[i] = numberIA) {
+        console.log('Acertou!!!')
+        console.log(`O número de tentativas foi: ${attempts.length}`)
+    }
+}
