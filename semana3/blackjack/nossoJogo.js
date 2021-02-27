@@ -23,7 +23,7 @@
 
 //     if (totalUser === totalAI) {
 //        console.log('Empate!')
-//     } else if (totalUser > totalAI) {
+//     } else if (totalUser <= 21 && totalAI > 21 || totalUser < totalAI && totalAI > 21 || (totalUser = 21)) {
 //       console.log('O usuário ganhou!')
 //     } else {
 //       console.log('O computador ganhou!')
@@ -133,12 +133,13 @@ for (i=0; i < aiCards.length; i++) {
       if (buyNewCardUser) {
       let newCard = comprarCarta()
       playerCards.push(newCard)
-      for (i = 2; i < playerCards.length;i++) {
-         playerCards[i]
+      for (i = 0; i < playerCards.length;i++) {
+         if (playerCards[i].texto !== mainHand[i]) {
          totalUser += playerCards[i].valor
          console.log(totalUser)
          mainHand.push(playerCards[i].texto)
          console.log(mainHand)
+         }
       }
       }
    }
@@ -151,10 +152,11 @@ for (i=0; i < aiCards.length; i++) {
 
       let newCardAI = comprarCarta()
       aiCards.push(newCardAI)
-      for (i=2; i < aiCards.length; i++) {
-         aiCards[i]
+      for (i=0; i < aiCards.length; i++) {
+         if (aiCards[i].texto !== mainHandAI[i]) {
          totalAI += aiCards[i].valor
          mainHandAI.push(aiCards[i].texto)
+         }
       }
    }
 
@@ -164,7 +166,7 @@ for (i=0; i < aiCards.length; i++) {
 
   if (totalUser === totalAI) {
      alert(`Suas cartas são ${mainHand} . Sua pontuação é `, console.log(totalUser) ` ${totalUser}.\nAs cartas do computador são ${mainHandAI} . A pontuação do computador é ${totalAI}.\nDeu empate!`)
-  } else if (totalUser <= 21 && totalAI > 21 || totalUser < totalAI && totalAI > 21 || (totalUser = 21)) {
+  } else if (totalUser <= 21 && totalAI > 21 || totalUser < totalAI && totalAI > 21 || totalUser > totalAI && totalUser < 21 || (totalUser === 21)) {
      alert(`Suas cartas são ${mainHand} . Sua pontuação é ${totalUser}.\nAs cartas do computador são ${mainHandAI} . A pontuação do computador é ${totalAI}.\nVocê ganhou!`)
   } else {
      alert(`Suas cartas são ${mainHand} . Sua pontuação é ${totalUser}.\nAs cartas do computador são ${mainHandAI} . A pontuação do computador é ${totalAI}.\nO computador ganhou!`)
