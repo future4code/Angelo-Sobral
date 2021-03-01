@@ -47,3 +47,13 @@ function printText(texto) {
         console.log(texto)
     }
 }
+
+// 6. a.
+const numeros = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+
+function quantidadeArray(array) {
+    for (i=0; i < array.length; i++) {
+        return array.length
+    }
+}
+// b.
