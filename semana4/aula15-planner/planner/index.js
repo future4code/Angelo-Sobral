@@ -1,21 +1,18 @@
-// hoje tive diversos prolemas e por isso não pude entragar o exercícios finalizado. Vou tentar fazer até o final do dia, mas acho dificil.
-
+// consegui finzalizar os exercícios, ficou pendente os desafios que tento amanhã
 
 function createTask() {
-    alert('Clicou no botão criar tarefa!')
+    // alert('Clicou no botão criar tarefa!')
 
-    let task = document.getElementById('tarefa').value
+    let task = document.getElementById('tarefa')
+    // console.log(task)
 
-    console.log(task)
-    let dayOfWeek = document.getElementById('dias-semana')
-    // let dayOfWeekIndex
-    // for (let index = 0; index < dayOfWeek.length; index++) {
-    //     console.log(dayOfWeek[index])
-        
-    // }
+    let daysOfWeek = document.getElementById('dias-semana')
+    // console.log(daysOfWeek.value)
 
-    for (item of dayOfWeek) {
-        console.log(item)
-    }
-    // console.log(dayOfWeek)
+    let printTask = document.getElementById(daysOfWeek.value)
+    // console.log(pritnTask)
+
+    printTask.innerHTML += `<p>${task.value}</p>`
+
+    task.value = ''
 }
