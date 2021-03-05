@@ -7,13 +7,10 @@ imprimirExtrato()
 function imprimirDespesas(despesas){
     let divDespesas = document.getElementById('despesas')
     divDespesas.innerHTML = '<p><u>Despesas Detalhadas</u></p>'
-
-    // AQUI VEM A IMPLEMENTAÇÃO
-    despesas.forEach((item) => {
-        divDespesas.innerHTML += `<p>valor: R$${item.valor} | tipo: ${item.tipo} | descrição: ${item.descricao}</p>`
+    despesas.forEach((item)=>{
+        divDespesas.innerHTML += `<p>R$${item.valor.toFixed(2)} - ${item.tipo} - ${item.descricao}</p>`
     })
-
-    
+    console.log(despesas)
 }
 
 
@@ -25,20 +22,28 @@ function imprimirExtrato(){
     let gastoUtilidades = 0
     let gastoViagem = 0
 
-
-    // AQUI VEM A IMPLEMENTAÇÃO
-
-    const tiposDeGasto = arrDespesas.map((item)=>{
+    arrDespesas.forEach((item)=>{
         gastoTotal += item.valor
-        if (item.tipo === 'alimentação') {
-            gastoAlimentacao += item.valor
-        } else if (item.tipo ==='utilidades') {
-            gastoUtilidades += item.valor
-        } else if (item.tipo === 'viagem') {gastoViagem += item.valor}
+        switch (item.tipo){
+            case "alimentação":
+                gastoAlimentacao += item.valor
+                console.log("gasto", gastoAlimentacao)
+                break
+            case "utilidades":
+                gastoUtilidades += item.valor
+                break
+            case "viagem":
+                gastoViagem += item.valor
+                break
+            default:
+                break
+        }
     })
+
     
     divExtrato.innerHTML = `<p>Extrato: Gasto Total: R$${gastoTotal} | Alimentação: R$${gastoAlimentacao} | 
-                                        Utilidades: R$${gastoUtilidades} | Viagem: R$${gastoViagem}</p>`
+                                    Utilidades: R$${gastoUtilidades} | Viagem: R$${gastoViagem}</p>`
+    
 }
 
 
@@ -86,21 +91,13 @@ function filtrarDespesas(){
     let valorMax = Number(document.getElementById('valorFiltroMax').value)
 
 
-    // AQUI NESSA VARIÁVEL VEM A IMPLEMENTAÇÃO
     let despesasFiltradas = arrDespesas.filter((item)=>{
-        // if (tipoFiltro === "todos"){
-        //     return item.valor >= valorMin && item.valor <= valorMax 
-        // } else {
-        //     return item.valor >= valorMin && item.valor <= valorMax && item.tipo === tipoFiltro
-        // }
-
-        if (tipoFiltro === 'todos') {
-            return true
-        } else if (item.tipo === tipoFiltro) {
-            return true
+        if (tipoFiltro === "todos"){
+            return item.valor >= valorMin && item.valor <= valorMax 
+        } else {
+            return item.valor >= valorMin && item.valor <= valorMax && item.tipo === tipoFiltro
         }
     })
-
 
     imprimirDespesas(despesasFiltradas)
 }
