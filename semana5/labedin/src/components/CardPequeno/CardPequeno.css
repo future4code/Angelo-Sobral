@@ -1,0 +1,15 @@
+.info-content {
+    border: 1px solid #000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.info-content:first-child {
+    margin-bottom: 10px;
+}
+
+img {
+    width: 30px;
+    margin: 0 5px;
+}
