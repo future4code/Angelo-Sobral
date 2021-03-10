@@ -7,7 +7,7 @@ export class SecaoComentario extends Component {
 	}
 
 	onChangeComentario = (event) => {
-		console.log(event.target)
+		
 		this.setState({novoComentario: event.target.value})
 	}
 

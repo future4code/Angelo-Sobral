@@ -6,24 +6,29 @@ import {IconeComContador} from '../IconeComContador/IconeComContador'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
+import iconeSalvarPost from '../../img/save-button.svg'
+import iconePostSalvo from '../../img/save-color.svg'
+import iconeCompartilhar from '../../img/share.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import { IconeSalvar } from '../IconeSalvar/IconeSalvar'
 
 class Post extends React.Component {
   state = {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    salvarPost: false
   }
 
   onClickCurtida = () => {
     let numCurtidas
     if (this.state.curtido){
-      console.log('Descurtiu')
+      
       numCurtidas = this.state.numeroCurtidas -1
       this.setState({curtido: false, numeroCurtidas: numCurtidas})
     } else {
-      console.log('curtiu')
+      
       numCurtidas = this.state.numeroCurtidas +1
       this.setState({curtido: true, numeroCurtidas: numCurtidas})
     }
@@ -42,6 +47,14 @@ class Post extends React.Component {
     })
   }
 
+  salvarPost = () => {
+    if (this.state.salvarPost) {
+        this.setState({salvarPost:false})
+    } else {
+      this.setState({salvarPost: true})
+    }
+  }
+
   render() {
     let iconeCurtida
 
@@ -57,6 +70,14 @@ class Post extends React.Component {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
 
+    let marcarPost
+
+    if(this.state.salvarPost) {
+      marcarPost = iconePostSalvo
+    } else {
+      marcarPost = iconeSalvarPost
+    }
+
     return <div className={'post-container'}>
       <div className={'post-header'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
@@ -70,6 +91,11 @@ class Post extends React.Component {
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
           valorContador={this.state.numeroCurtidas}
+        />
+
+        <IconeSalvar 
+          icone={marcarPost}
+          salvarPost={this.salvarPost}
         />
 
         <IconeComContador
