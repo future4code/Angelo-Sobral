@@ -11,6 +11,7 @@ import iconePostSalvo from '../../img/save-color.svg'
 import iconeCompartilhar from '../../img/share.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import { IconeSalvar } from '../IconeSalvar/IconeSalvar'
+import { CompartilharPost } from '../CompartilharPost/CompartilharPost'
 
 class Post extends React.Component {
   state = {
@@ -18,7 +19,12 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvarPost: false
+    salvarPost: false,
+    compartilhando: false,
+    botao1: 'Instagram',
+    botao2: 'Facebook',
+    botao3: 'Twitter',
+    comentario:''
   }
 
   onClickCurtida = () => {
@@ -55,6 +61,31 @@ class Post extends React.Component {
     }
   }
 
+  compartilharPost = () => {
+    this.setState({
+      compartilhando: !this.state.compartilhando
+    })
+  }
+
+  onChangeCometario = (e) => {
+    this.setState({comentario: e.target.value})
+  }
+
+  imprimeRedeSocial = () => {
+    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao1}`)
+    this.setState({compartilhando: false})
+  }
+  
+  imprimeRedeSocial2 = () => {
+    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao2}`)
+    this.setState({compartilhando: false})
+  }
+
+  imprimeRedeSocial3 = () => {
+    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao3}`)
+    this.setState({compartilhando: false})
+  }
+
   render() {
     let iconeCurtida
 
@@ -78,6 +109,17 @@ class Post extends React.Component {
       marcarPost = iconeSalvarPost
     }
 
+    let componenteCompartilhar
+
+    if(this.state.compartilhando) {
+      componenteCompartilhar = <CompartilharPost 
+                                  redeSocial1={this.imprimeRedeSocial} 
+                                  redeSocial2={this.imprimeRedeSocial2} 
+                                  redeSocial3={this.imprimeRedeSocial3}
+                                  changeCometario={this.onChangeCometario}
+                                />
+    }
+
     return <div className={'post-container'}>
       <div className={'post-header'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
@@ -96,6 +138,8 @@ class Post extends React.Component {
         <IconeSalvar 
           icone={marcarPost}
           salvarPost={this.salvarPost}
+          share={iconeCompartilhar}
+          compartilhar={this.compartilharPost}
         />
 
         <IconeComContador
@@ -104,6 +148,7 @@ class Post extends React.Component {
           valorContador={this.state.numeroComentarios}
         />
       </div>
+      {componenteCompartilhar}
       {componenteComentario}
     </div>
   }
