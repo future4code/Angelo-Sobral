@@ -11,8 +11,7 @@ export class CompartilharPost extends Component {
 	render() {
 		return <div className={'compartilhar-container'}>
             <input 
-                value={this.state.Comentario}
-                onChange={this.props.changeCometario}
+                onChange={this.props.changeMensagem}
                 placeholder={'Compartilha deixando uma mensagem...'}
             />
 			<button onClick={this.props.redeSocial1}>{this.state.botao1}</button>

@@ -31,3 +31,8 @@
     height: 225px;
     object-fit: cover;
 }
+
+.comentario {
+    margin-left: 10px;
+    margin-bottom: -10px;
+}
