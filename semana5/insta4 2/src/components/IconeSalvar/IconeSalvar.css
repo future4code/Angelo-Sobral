@@ -1,0 +1,7 @@
+.icon-salvar img {
+    width: 24px;
+}
+
+.icon-salvar img:first-child {
+    margin-right: 50px;
+}
