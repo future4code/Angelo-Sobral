@@ -27,11 +27,17 @@ class App extends React.Component {
   render() {
 
     const listaDePost = this.state.Post.map(post => {
-      return <Post />
+      return <Post nomeUsuario={post.nomeUsuario} fotoUsuario={post.fotoUsuario}  fotoPost={post.fotoPost} />
     })
 
     return (
       <div className={'app-container'}>
+        <div>
+          <input/>
+          <input/>
+          <input/>
+          <button>Adicionar Post</button>
+        </div>
         {listaDePost}
       </div>
     );
