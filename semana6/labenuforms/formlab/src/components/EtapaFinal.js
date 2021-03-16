@@ -9,7 +9,7 @@ export default class EtapaFinal extends React.Component {
     render() {
         return (
             <div>
-                <Titulo>O formulário acabaou!</Titulo>
+                <Titulo>O formulário acabou!</Titulo>
                 <p>Agradecemos sua participação. Em breve entraremos em contato.</p>
             </div>
         )

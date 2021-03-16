@@ -24,7 +24,7 @@ export default class Etapa3 extends React.Component {
 
     verificaResposta = () => {
         if (this.state.naoFezGraduacao) {
-            this.props.botaoProximo()
+            this.props.botaoProximo(0)
         } else {
             alert('Preencha todos os campos antes de ir para próxima etapa.')
             if (!this.state.naoFezGraduacao) {this.setState({erroGraduacao: 'Preencha o motivo'})} else {this.setState({erroGraduacao: ''})}

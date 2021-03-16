@@ -37,7 +37,12 @@ export default class Etapa1 extends React.Component {
 
     verificaResposta = () => {
         if (this.state.inputNome && this.state.inputIdade && this.state.inputEmail) {
-            this.props.botaoProximo()
+            if (this.state.escolaridade === 'Ensino superior completo' || this.state.escolaridade === 'Ensino superior incompleto') {
+                this.props.botaoProximo(0)
+            } else {
+                this.props.botaoProximo(1)
+            }
+            
         } else {
             alert('Preencha todos os campos antes de ir para a próxima etapa.')
         if (!this.state.inputNome) {this.setState({erroNome: 'Preencha o nome'})} else {this.setState({erroNome: ''})}
@@ -47,8 +52,7 @@ export default class Etapa1 extends React.Component {
     }
 
     checarOption = (e) => {
-        this.setState({escolaridade: e.target.value})
-        console.log(this.state.escolaridade)
+        this.setState({escolaridade: e.target.value}, ()=> console.log(this.state.escolaridade))
     }
 
 

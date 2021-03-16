@@ -10,19 +10,27 @@ export default class App extends React.Component  {
     etapa: 1
   }
 
-  proximaEtapa = () => {
-    this.setState({etapa: this.state.etapa +1})
+  proximaEtapa = (n) => {
+    this.setState({etapa: this.state.etapa +1+n})
   }
 
   voltarEtapa = () => {
+    if (this.state.etapa === 2) {
     this.setState({etapa: this.state.etapa -1})
+    } else {
+      this.setState({etapa: this.state.etapa -2})
+    }
+  }
+
+  avancaEtapa = () => {
+    this.setState({etapa: 2}, ()=> console.log(this.state.etapa))
   }
 
   render() {
     const renderEtapas = () => {
     switch(this.state.etapa) {
       case 1:
-      return <Etapa1 botaoProximo={this.proximaEtapa}/>
+      return <Etapa1 botaoProximo={this.proximaEtapa} avancaEtapa={this.avancaEtapa} etapa={this.state.etapa}/>
       case 2:
       return <Etapa2 botaoProximo={this.proximaEtapa} botaoVoltar={this.voltarEtapa}/>
       case 3:
