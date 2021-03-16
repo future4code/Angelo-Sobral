@@ -20,7 +20,7 @@ export default class Etapa1 extends React.Component {
         erroNome:'',
         erroIdade:'',
         erroEmail:'',
-        escolaridade:''
+        escolaridade: '',
     }
 
     valorInputNome = (e) => {
@@ -45,6 +45,12 @@ export default class Etapa1 extends React.Component {
         if (!this.state.inputEmail) {this.setState({erroEmail: 'Preencha o e-mail'})} else {this.setState({erroEmail: ''})}
         }
     }
+
+    checarOption = (e) => {
+        this.setState({escolaridade: e.target.value})
+        console.log(this.state.escolaridade)
+    }
+
 
     render() {
         
@@ -71,11 +77,11 @@ export default class Etapa1 extends React.Component {
                 />
                 {this.state.erroEmail && (<ParagrafoErro>{this.state.erroEmail}</ParagrafoErro>)}
                 <p>4. Qual a sua escolaridade?</p>
-                <select>
-                    <option>Ensino médio incompleto</option>
-                    <option>Ensino médio completo</option>
-                    <option>Ensino superior incompleto</option>
-                    <option>Ensino superior completo</option>
+                <select onChange={this.checarOption}>
+                    <option >Ensino médio incompleto</option>
+                    <option >Ensino médio completo</option>
+                    <option >Ensino superior incompleto</option>
+                    <option >Ensino superior completo</option>
                 </select>
                 <br/>
                 <Botao onClick={this.verificaResposta}>Próxima Etapa</Botao>
