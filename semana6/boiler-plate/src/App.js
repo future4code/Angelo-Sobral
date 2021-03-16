@@ -41,7 +41,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-
+    console.log(this.state.tarefas)
   };
 
   onChangeInput = (event) => {
@@ -52,19 +52,25 @@ class App extends React.Component {
     const novaTarefa = {
       id: Date.now(),
       texto: this.state.inputValue,
-      completa: false
+      completa: true
     }
     const arrayTarefas = [...this.state.tarefas, novaTarefa]
 
-    this.setState({ tarefas: arrayTarefas})
+    this.setState({ tarefas: arrayTarefas, inputValue: ''})
   }
 
   selectTarefa = (id) => {
-    
+    // pode fazer com map tbm
+    const novaListaTarefas = [...this.state.tarefas]
+    novaListaTarefas.forEach(item => item.completa = item.id === id ? !item.completa : item.completa )
+
+    this.setState({ tarefas: novaListaTarefas })
   }
 
   onChangeFilter = (event) => {
-
+    this.setState({
+      filtro: event.target.value
+    })
   }
 
   render() {
