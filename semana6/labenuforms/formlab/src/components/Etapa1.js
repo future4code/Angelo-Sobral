@@ -19,7 +19,8 @@ export default class Etapa1 extends React.Component {
         inputEmail:'',
         erroNome:'',
         erroIdade:'',
-        erroEmail:''
+        erroEmail:'',
+        escolaridade:''
     }
 
     valorInputNome = (e) => {
