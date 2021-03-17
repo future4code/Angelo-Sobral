@@ -17,6 +17,12 @@ const InputsContainer = styled.div`
   grid-auto-flow: column;
   gap: 10px;
 `
+const ApagarDiv = styled.div`
+display: flex;
+`
+const ApagarBotao = styled.button`
+margin: 0 10px;
+`
 
 class App extends React.Component {
     state = {
@@ -27,21 +33,24 @@ class App extends React.Component {
           completa: false
         },
         {
-          id: Date.now(),
+          id: setInterval(() => {
+            Date.now()
+          }, 100),
           texto: "Lavar o banheiro",
           completa: true
         }
       ],
       inputValue: '',
-      filtro: 'pendentes'
+      filtro: 'pendentes',
+      pesquisa:''
     }
 
   componentDidUpdate() {
-
+      
   };
 
   componentDidMount() {
-    console.log(this.state.tarefas)
+   
   };
 
   onChangeInput = (event) => {
@@ -52,7 +61,7 @@ class App extends React.Component {
     const novaTarefa = {
       id: Date.now(),
       texto: this.state.inputValue,
-      completa: true
+      completa: false
     }
     const arrayTarefas = [...this.state.tarefas, novaTarefa]
 
@@ -73,6 +82,24 @@ class App extends React.Component {
     })
   }
 
+  apagarTodasTarefas = () => {
+    console.log(this.state.tarefas)
+    if (!this.state.tarefas.length) {
+      alert('Não tem nada para apagar!')
+    } else if (window.confirm('Tem certeza que deseja apagar todas as tarefas?')) {
+        
+        this.setState({ tarefas: [] })
+    }
+  }
+
+  apagarTarefa = (id) => {
+    const apagarTarefa = [...this.state.tarefas]
+    const apagarTarefasFiltro = apagarTarefa.filter((item) => {
+      return item.id !== id
+    })
+    this.setState({ tarefas:apagarTarefasFiltro })
+  }
+
   render() {
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
@@ -80,6 +107,8 @@ class App extends React.Component {
           return !tarefa.completa
         case 'completas':
           return tarefa.completa
+          case '':
+            return <div></div>
         default:
           return true
       }
@@ -105,15 +134,19 @@ class App extends React.Component {
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
-              <Tarefa
-                completa={tarefa.completa}
-                onClick={() => this.selectTarefa(tarefa.id)}
-              >
-                {tarefa.texto}
-              </Tarefa>
+              <ApagarDiv>
+                <Tarefa
+                  completa={tarefa.completa}
+                  onClick={() => this.selectTarefa(tarefa.id)}
+                >
+                  {tarefa.texto}
+                </Tarefa>
+                <ApagarBotao onClick={() => this.apagarTarefa(tarefa.id)}>x</ApagarBotao>
+              </ApagarDiv>
             )
           })}
         </TarefaList>
+        <button onClick={this.apagarTodasTarefas}>Apagar todas as tarefas</button>
       </div>
     )
   }
