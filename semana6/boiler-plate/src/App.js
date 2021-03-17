@@ -50,7 +50,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-   
+   console.log('atualizou')
   };
 
   onChangeInput = (event) => {
@@ -66,6 +66,7 @@ class App extends React.Component {
     const arrayTarefas = [...this.state.tarefas, novaTarefa]
 
     this.setState({ tarefas: arrayTarefas, inputValue: ''})
+    localStorage.setItem('tarefaLocal', JSON.stringify(arrayTarefas))
   }
 
   selectTarefa = (id) => {
