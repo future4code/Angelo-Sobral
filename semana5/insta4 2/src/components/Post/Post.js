@@ -24,7 +24,13 @@ class Post extends React.Component {
     botao1: 'Instagram',
     botao2: 'Facebook',
     botao3: 'Twitter',
-    comentario:''
+    mensagem:'',
+    comentario: [
+      {
+        msg:''
+      }
+    ],
+    valorComentario:''
   }
 
   onClickCurtida = () => {
@@ -46,10 +52,21 @@ class Post extends React.Component {
     })
   }
 
+  onChangeComentario = (e) => {
+    this.setState({valorComentario: e.target.value})
+  }
+
   aoEnviarComentario = () => {
+    const novoComentario = {
+      msg: this.state.valorComentario
+    }
+
+    const comentarioAcumulado = [novoComentario, ...this.state.comentario]
+    
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      comentario: comentarioAcumulado
     })
   }
 
@@ -67,22 +84,22 @@ class Post extends React.Component {
     })
   }
 
-  onChangeCometario = (e) => {
-    this.setState({comentario: e.target.value})
+  onChangeMensagem = (e) => {
+    this.setState({mensagem: e.target.value})
   }
 
   imprimeRedeSocial = () => {
-    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao1}`)
+    console.log(`${this.state.mensagem} - Post compartilhado no ${this.state.botao1}`)
     this.setState({compartilhando: false})
   }
   
   imprimeRedeSocial2 = () => {
-    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao2}`)
+    console.log(`${this.state.mensagem} - Post compartilhado no ${this.state.botao2}`)
     this.setState({compartilhando: false})
   }
 
   imprimeRedeSocial3 = () => {
-    console.log(`${this.state.comentario} - Post compartilhado no ${this.state.botao3}`)
+    console.log(`${this.state.mensagem} - Post compartilhado no ${this.state.botao3}`)
     this.setState({compartilhando: false})
   }
 
@@ -98,7 +115,7 @@ class Post extends React.Component {
     let componenteComentario
 
     if(this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} comentario={this.onChangeComentario} valor={this.state.valorComentario}/>
     }
 
     let marcarPost
@@ -116,9 +133,14 @@ class Post extends React.Component {
                                   redeSocial1={this.imprimeRedeSocial} 
                                   redeSocial2={this.imprimeRedeSocial2} 
                                   redeSocial3={this.imprimeRedeSocial3}
-                                  changeCometario={this.onChangeCometario}
+                                  changeMensagem={this.onChangeMensagem}
+                                  value={this.state.mensagem}
                                 />
     }
+
+    const listaComentario = this.state.comentario.map(item => {
+      return <p className={'comentario'}>{item.msg}</p>
+    })
 
     return <div className={'post-container'}>
       <div className={'post-header'}>
@@ -150,6 +172,8 @@ class Post extends React.Component {
       </div>
       {componenteCompartilhar}
       {componenteComentario}
+      <p className={'comentario'}>Comentários:</p>
+      {listaComentario}
     </div>
   }
 }
