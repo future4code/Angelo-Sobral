@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export default class SingUpUsers extends React.Component {
 
     state = {
-        users: [],
         inputValueName:'',
         inputValueEmail:'',
     }
@@ -19,6 +18,28 @@ export default class SingUpUsers extends React.Component {
     }
 
     createUser = () => {
+        if (this.state.inputValueEmail && this.state.inputValueName) {
+            const body = {
+                name: this.state.inputValueName,
+                email: this.state.inputValueEmail
+            }
+
+            axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
+                headers: {
+                    Authorization: 'angelovso-cruz'
+                }
+            }).then((result) => {
+                this.setState({inputValueEmail: '', inputValueName: ''})
+                alert('Cadastro realizado com sucesso!')
+            }).catch((error) => {
+                alert(`${console.log(error.response.data)}`)
+            })
+
+
+
+        } else {
+            alert('Preencha todos os campos realizar o cadastro!')
+        }
 
     }
 
@@ -37,7 +58,7 @@ export default class SingUpUsers extends React.Component {
                 value={this.state.inputValueEmail}
                 placeholder={'Email'}
                 />
-                <button>Cadastrar</button>
+                <button onClick={this.createUser}>Cadastrar</button>
             </ContainerDiv>
         )
     }
