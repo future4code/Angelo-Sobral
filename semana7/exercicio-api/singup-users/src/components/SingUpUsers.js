@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+// styled components no final do código
+
 export default class SingUpUsers extends React.Component {
 
     state = {
@@ -32,7 +34,7 @@ export default class SingUpUsers extends React.Component {
                 this.setState({inputValueEmail: '', inputValueName: ''})
                 alert('Cadastro realizado com sucesso!')
             }).catch((error) => {
-                alert(`${console.log(error.response.data)}`)
+                alert('Usuário ou email já cadastrado')
             })
 
 
@@ -59,6 +61,7 @@ export default class SingUpUsers extends React.Component {
                 placeholder={'Email'}
                 />
                 <button onClick={this.createUser}>Cadastrar</button>
+                <button onClick={this.props.togglePage}>Ir para tela de Usuários</button>
             </ContainerDiv>
         )
     }
@@ -84,6 +87,11 @@ input {
 }
 
 button {
-    width: 100px;
+    width: 80px;
+    margin-bottom: 1.5rem;
+
+    :last-child {
+        width: 160px;
+    }
 }
 `
