@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import ListUsers from './components/ListUsers';
-import SingUpUsers from './components/SingUpUsers';
+import SingUpUsers from './components/SignUpUsers';
 
 
 class App extends React.Component {
@@ -10,9 +10,7 @@ class App extends React.Component {
     currentPage: true
   }
 
-  togglePage = () => {
-    this.setState({ currentPage: !this.state.currentPage })
-  }
+  togglePage = () => this.setState({ currentPage: !this.state.currentPage })
 
   render () {
     return (

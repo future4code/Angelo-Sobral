@@ -1,58 +1,76 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { axiosConfig, baseUrl } from './Params';
+import { DetailsList } from './DetailsList';
 
 // styled components no final do código
 
 export default class ListUsers extends React.Component {
 
     state= {
-        users: []
+        users: [],
+        currentPage: true,
+        userId: ''
+    }
+
+    componentDidUpdate() {
+        this.getAllUsers()
     }
 
     componentDidMount() {
         this.getAllUsers()
     }
 
-    getAllUsers = () => {
-        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
-            headers: {
-                Authorization: 'angelovso-cruz'
-            }
-        }).then((result) => {
-            this.setState({ users: result.data})
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
-
+    getAllUsers = async () => {
+        try {
+        const response = await axios.get(baseUrl, axiosConfig)
+        this.setState({ users: response.data})
+        } catch (error) {
+        console.log(error.response)
+        }
     }
 
-    deleteUser = (userId) => {
-        if (window.confirm('Tem certeza que deseja excluir o usuário?')) {
+    deleteUser = async (userId) => {
+        try {
+            if (window.confirm('Tem certeza que deseja excluir o usuário?')) {
         
-        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,{
-            headers: {
-                Authorization: 'angelovso-cruz'
-            }
-        } ).then((result) => {
-            this.getAllUsers()
-            alert('Usuário removido com sucesso!')
-        }).catch((res) => {
-            alert('Não foi possível remover usário. Tente novamente mais tarde!')
-        })
+                const response = await axios.delete(`${baseUrl}${userId}`, axiosConfig)
+                    this.getAllUsers()
+                    this.setState({currentPage: true, userId: ''})
+                    alert('Usuário removido com sucesso!')
+            } 
+        
+        } catch (error) {
+            alert('Não foi possível remover o usário. Tente novamente mais tarde!')
         }
+    }
+
+    togglePage = (id) => {
+        this.state.currentPage 
+        ?
+        (this.setState({currentPage: false, userId: id}))
+        :
+        (this.setState({currentPage: true, userId: ''}))
     }
 
     render() {
          const users = this.state.users.map((user) => {
-             return <li>{user.name} <span onClick={() => this.deleteUser(user.id)}>X</span></li>
+             return <div>
+                        <li onClick={() => this.togglePage(user.id)}> {user.name} </li>
+                        <span onClick={() => this.deleteUser(user.id)}>X</span>
+                    </div>
          })
         return (
             <ContainerUser>
                 <ul>
-                    <button onClick={this.props.togglePage}>Voltar para tela de cadastro</button>
+                    <BackButton onClick={this.props.togglePage}>Voltar para tela de cadastro</BackButton>
                     <h1>Lista de Usuários Cadastrados:</h1>
-                    {users}
+                    {this.state.currentPage 
+                    ? 
+                    users 
+                    : 
+                    <DetailsList togglePage={this.togglePage} userId={this.state.userId} deleteUser={this.deleteUser}/>}
                 </ul>
             </ContainerUser>
         )
@@ -62,7 +80,7 @@ export default class ListUsers extends React.Component {
 const ContainerUser = styled.div`
 display: flex;
 flex-direction: column;
-width: 400px;
+width: 600px;
 height: 100%;
 margin: 0 auto;
 padding: 2rem;
@@ -78,34 +96,52 @@ ul {
     margin: 0;
     padding: 0;
     align-self: flex-start;
-
-    button {
-        margin-bottom: 1.5rem;
-    }
+    width: 100%;
 }
 
-li {
-    list-style:none;
-    text-align: left;
-    margin: 5px 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 10px;
-    :nth-child(2n) {
-        background-color: #ebecf0;
+    div {
+        position: relative;
+
+        :nth-child(2n) {
+            background-color: #ebecf0;
+        }
+
+    li {
+        list-style:none;
+        text-align: left;
+        margin: 5px 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 10px;
+        opacity: .8;
+        cursor: pointer;
+        background-color: #f7f7f7;
+        
+
+        :hover {
+            opacity: 1;
+        }
+
     }
 
     span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #c00000;
-        width: 20px;
-        height: 20px;
-        color: #fff;
-        border-radius: 50%;
-        cursor: pointer;
-    }
+            position: absolute;
+            top:10px;
+            right: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #c00000;
+            width: 20px;
+            height: 20px;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
 }
+`
+const BackButton = styled.button`
+margin-bottom: 1.5rem;
 `

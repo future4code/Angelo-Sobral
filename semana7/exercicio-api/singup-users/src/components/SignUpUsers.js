@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { axiosConfig, baseUrl } from './Params';
 
 // styled components no final do código
 
-export default class SingUpUsers extends React.Component {
+export default class SignUpUsers extends React.Component {
 
     state = {
         inputValueName:'',
@@ -19,30 +20,24 @@ export default class SingUpUsers extends React.Component {
         this.setState({ inputValueEmail: e.target.value})
     }
 
-    createUser = () => {
-        if (this.state.inputValueEmail && this.state.inputValueName) {
-            const body = {
-                name: this.state.inputValueName,
-                email: this.state.inputValueEmail
-            }
-
-            axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
-                headers: {
-                    Authorization: 'angelovso-cruz'
+    createUser = async () => {
+        try {
+            if (this.state.inputValueEmail && this.state.inputValueName) {
+                const body = {
+                    name: this.state.inputValueName,
+                    email: this.state.inputValueEmail
                 }
-            }).then((result) => {
-                this.setState({inputValueEmail: '', inputValueName: ''})
-                alert('Cadastro realizado com sucesso!')
-            }).catch((error) => {
-                alert('Usuário ou email já cadastrado')
-            })
-
-
-
-        } else {
-            alert('Preencha todos os campos realizar o cadastro!')
+                
+                const response = await axios.post( baseUrl, body, axiosConfig)
+                    this.setState({inputValueEmail: '', inputValueName: ''})
+                    alert('Cadastro realizado com sucesso!')
+    
+            } else {
+                alert('Preencha todos os campos realizar o cadastro!')
+            }
+        } catch (error) {
+            alert('Usuário ou email já cadastrado')
         }
-
     }
 
     render(){
@@ -62,6 +57,7 @@ export default class SingUpUsers extends React.Component {
                 />
                 <button onClick={this.createUser}>Cadastrar</button>
                 <button onClick={this.props.togglePage}>Ir para tela de Usuários</button>
+                
             </ContainerDiv>
         )
     }
