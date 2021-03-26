@@ -21,15 +21,17 @@ export default class GetPokemons extends React.Component {
 
 
     getPokemon = async () => {
-        const pokemonName = this.state.pokemonName
-        const arrayPoke = []
-        try {
-            const response = await axios.get(`${baseUrl}${pokemonName}`)
-            arrayPoke.push(response.data)
-            this.setState({ pokemonData: arrayPoke, pokemonType: response.data.types, loading: false})
-        } catch (err) {
-            alert('Ops! Acho que você digitou alguma coisa que não é um pokemon!')
-        }
+        if (this.state.pokemonName) {
+            const pokemonName = this.state.pokemonName
+            const arrayPoke = []
+            try {
+                const response = await axios.get(`${baseUrl}${pokemonName}`)
+                arrayPoke.push(response.data)
+                this.setState({ pokemonData: arrayPoke, pokemonType: response.data.types, loading: false})
+            } catch (err) {
+                alert('Ops! Acho que você digitou alguma coisa que não é um pokemon!')
+            }
+        } else {alert('Insira o nome ou número do pokémon que deseja buscar!')}
     }
 
     render () {
