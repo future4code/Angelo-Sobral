@@ -6,7 +6,7 @@ export class Playlist extends React.Component {
 
     state = {
         playlists: [],
-
+        tracks: []
     }
 
     componentDidMount() {
@@ -30,12 +30,23 @@ export class Playlist extends React.Component {
         }
     }
 
+    getTracks = async (id) => {
+        try{
+            const res = await axios.get(`${baseUrl}/${id}/tracks`, headers)
+            this.setState({tracks: res.data.result.tracks}, () => console.log(this.state.tracks))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
 
         const playlists = this.state.playlists.map((list) => {
             return (
                 <div>
-                    <li key={list.id}>{list.name}</li><button onClick={() => this.deletePlaylist(list.id)}>Deletar</button>
+                    <li key={list.id}>{list.name}</li>
+                    <button onClick={() => this.getTracks(list.id)}>Detalhes</button>
+                    <button onClick={() => this.deletePlaylist(list.id)}>Deletar</button>
                 </div>)
         })
 
