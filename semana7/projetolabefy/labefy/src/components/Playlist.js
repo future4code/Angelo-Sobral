@@ -22,11 +22,26 @@ export class Playlist extends React.Component {
         }
     }
 
+    deletePlaylist = async (id) => {
+        try{
+            await axios.delete(`${baseUrl}/${id}`, headers)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
+
+        const playlists = this.state.playlists.map((list) => {
+            return (
+                <div>
+                    <li key={list.id}>{list.name}</li><button onClick={() => this.deletePlaylist(list.id)}>Deletar</button>
+                </div>)
+        })
 
         return (
             <div>
-                
+                {playlists}
             </div>
         )
     }
