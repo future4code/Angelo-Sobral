@@ -14,7 +14,6 @@ export default class CreatePlaylist extends React.Component {
 
     onClickCreatePlaylist = () => {
         this.createPlaylist()
-        this.setState({ playlistName: ''})
     }
 
     createPlaylist = async () => {
@@ -22,11 +21,11 @@ export default class CreatePlaylist extends React.Component {
 
         try{
             await axios.post(baseUrl, body, headers)
-            
             alert(`Playlist criada com sucesso!`)
+            this.setState({ playlistName: ''})
         } catch (err) {
-            
             alert('Ops! Acho que já cadastrou essa playlist. :)')
+            this.setState({ playlistName: ''})
         }
     }
 

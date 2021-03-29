@@ -38,6 +38,7 @@ export default class Details extends React.Component {
             <div>
                 <Button onClick={this.props.handlePage}>Voltar</Button>
                 {trackList}
+                {this.state.tracks.length === 0 && <Div>Ainda não tem música adicionada nesta playlist</Div>}
             </div>
         )
     }
@@ -45,7 +46,7 @@ export default class Details extends React.Component {
 
 const Div = styled.div`
 color: #fff;
-margin-bottom: 1.5rem;
+margin: 1.5rem 0;
 background-color: #e8e8e8;
 padding: 5px 10px;
 color: #317c91;
