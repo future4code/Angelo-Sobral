@@ -2,7 +2,9 @@
   height: 100vh;
   background-color: #000;
   position: relative;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .astroDJ {

@@ -14,7 +14,7 @@ export default class CreatePlaylist extends React.Component {
 
     onClickCreatePlaylist = () => {
         this.createPlaylist()
-        this.setState({playlistName: ''})
+        this.setState({ playlistName: ''})
     }
 
     createPlaylist = async () => {
@@ -22,10 +22,11 @@ export default class CreatePlaylist extends React.Component {
 
         try{
             await axios.post(baseUrl, body, headers)
-            this.setState({ playlistName: ''})
-            alert('Playlist criada com sucesso!')
+            
+            alert(`Playlist criada com sucesso!`)
         } catch (err) {
-            console.log(err)
+            
+            alert('Ops! Acho que já cadastrou essa playlist. :)')
         }
     }
 
@@ -40,19 +41,19 @@ export default class CreatePlaylist extends React.Component {
                 value={this.playlistName}
                 />
                 <button onClick={this.onClickCreatePlaylist}>Criar playlist</button>
-                <audio controls>
-                    <source src={'http://spoti4.future4.com.br/1.mp3'} type={'audio/mpeg'}></source>
-                </audio>
+                <button onClick={this.props.handlePage}>Acesse suas playlists</button>
             </Container>
         )
     }
 }
 
 const Container = styled.div`
-padding-top: 30px;
+margin-top: -50px;
 display: flex;
 flex-direction: column;
+text-align: center;
 align-items: center;
+z-index: 1;
 
 h1, h3 {
     color: #317c91;
@@ -78,6 +79,8 @@ button {
     letter-spacing: 2px;
     color: #fff;
     font-weight: 600;
+    margin-bottom: 1.5rem;
+    outline: none;
 
     :hover {
         background-color: #589e9c;
@@ -87,7 +90,7 @@ button {
 `
 
 const Input = styled.input`
-width: 32%;
+width: 80%;
 height: 30px;
 border: 2px solid #317c91;
 margin-bottom: 1.5rem;
