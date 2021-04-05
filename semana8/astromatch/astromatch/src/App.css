@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(333deg,#ff7854,#fd267d);
+  height: 100vh;
+}
+
+.card {
+  height: 500px;
+  width: 380px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.438);
+  box-shadow: 0 8px 32px 0 rgba(131, 19, 122, 0.418);
+  backdrop-filter: blur( 4px );
+  border-radius: 20px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
