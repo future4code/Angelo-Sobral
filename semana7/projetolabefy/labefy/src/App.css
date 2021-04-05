@@ -1,0 +1,14 @@
+.App {
+  height: 100vh;
+  background-color: #000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.astroDJ {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
