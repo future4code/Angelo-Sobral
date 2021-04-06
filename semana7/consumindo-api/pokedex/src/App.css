@@ -1,0 +1,11 @@
+.App {
+background: url(
+  https://images6.alphacoders.com/328/thumb-1920-328013.jpg
+);
+background-position: center;
+background-size: cover;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
