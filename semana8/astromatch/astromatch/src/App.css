@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   align-items: center;
@@ -7,12 +13,75 @@
 }
 
 .card {
-  height: 500px;
-  width: 380px;
+  height: 76%;
+  width: 28%;
+  max-width: 404px;
+  min-width: 370px;
   text-align: center;
   background: rgba(255, 255, 255, 0.438);
   box-shadow: 0 8px 32px 0 rgba(131, 19, 122, 0.418);
   backdrop-filter: blur( 4px );
   border-radius: 20px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cardProfile {
+  height: 75%;
+  width: 80%;
+  background-color: #f4f4f4;
+}
+
+.cardProfile img {
+  width: 100%;
+  height: 75%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.like {
+  background: url(https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/green_webpict35_1484337168-1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 5px white solid;
+  transition: .4s;
+  box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.418);
+}
+
+.like:hover, .dislike:hover {
+  transform: scale(1.08);
+}
+
+.dislike {
+  background: url(https://image.flaticon.com/icons/png/512/458/458594.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: .4s;
+  box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.418);
 }
