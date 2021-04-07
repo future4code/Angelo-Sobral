@@ -103,6 +103,8 @@
   line-height: 1.2;
 }
 
+/* =========== Botões ============== */
+
 .buttons {
   width: 80%;
   display: flex;
@@ -118,6 +120,11 @@ button {
   outline: none;
   cursor: pointer;
   border: none;
+}
+
+button :nth-child(2) {
+  height: 40px;
+  width: 40px;
 }
 
 .like {
@@ -145,6 +152,20 @@ button {
   background-repeat: no-repeat;
   transition: .4s;
   box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.618);
+}
+
+.reset {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Flat_restart_icon.svg/1024px-Flat_restart_icon.svg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 5px white solid;
+  transition: .4s;
+  box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.618);
+}
+
+.reset:hover {
+  transform: rotate(360deg);
 }
 
 /* ============Tela de match================ */
