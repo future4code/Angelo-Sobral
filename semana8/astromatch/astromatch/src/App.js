@@ -1,10 +1,12 @@
 import './App.css';
-import Card from './components/Card';
+import MainScreen from './components/Card';
+import ItsMatch from './components/ItsMatch';
 
 const App = () => {
   return (
     <div className="App">
-      <Card/>
+      <MainScreen/>
+      <ItsMatch/>
     </div>
   );
 }
