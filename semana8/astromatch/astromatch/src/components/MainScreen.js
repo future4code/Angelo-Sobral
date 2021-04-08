@@ -3,6 +3,8 @@ import axios from 'axios'
 import "../App.css"
 import Buttons from "./Buttons"
 import Setting from "../assets/img/setting.svg"
+import styled from 'styled-components'
+import { keyframes } from 'styled-components'
 
 const MainScreen = () => {
 
@@ -27,25 +29,30 @@ const MainScreen = () => {
     }
   }
 
-  const choosePerson = async (id, choice) => {
-        
-    try {
-        const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/choose-person'
-        const body = {
-            id: id,
-            choice: choice
-        }
-        const res = await axios.post(url, body)
-        setIsMatch(res.data)
-    } catch (err) {
-        console.log(err)
+  const choosePerson = (id, choice) => {
+    const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/choose-person'
+    const body = {
+        id: id,
+        choice: choice
     }
-    console.log(isMatch)
-}
+    axios.post(url, body)
+    .then((response) => {
+    setIsMatch(response.data)
+    })
+    .catch ((err) => {
+    console.log(err)})
+    {body.choice ? (toggle('right')) : (toggle('left'))}
+  }
+
+  const toggle = (dir) => {
+    let card = document.querySelector('.cardProfile')
+    card.classList.toggle(dir)
+  }
 
   return (
     
     <>
+    {/* <SwipeCard>teste</SwipeCard> */}
     {loading ?
     (<div className="card">
         <div className="settings">
@@ -77,3 +84,27 @@ const MainScreen = () => {
 };
 
 export default MainScreen;
+
+const swipeRight = keyframes`
+0% {
+  transform: translateX(0px)
+}
+100% {
+  transform: translateX(1000%)
+}`
+
+const swipeLeft = keyframes`
+0% {
+  transform: translateX(0px)
+}
+100% {
+  transform: translateX(-1000%)
+}`
+
+const SwipeCard = styled.div`
+display: inline-block;
+background-color: blue;
+width: 200px;
+height: 100px;
+animation: ${swipeRight} 1s linear;
+`
