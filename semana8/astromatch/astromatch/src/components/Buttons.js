@@ -1,26 +1,48 @@
-import axios from 'axios';
-import React from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 import "../App.css";
 
 const Buttons = (props) => {
+  const [alert, setAlert] = useState(false);
 
-    const clearAll = async () => {
-        try {
-            const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/clear'
-            await axios.put(url)
-            alert("Tudo ok")
-        } catch (err) {
-            console.log(err)
-        }
+  const clearAll = async () => {
+    try {
+      const url =
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/clear";
+      await axios.put(url);
+      alertOpen();
+      alertClose();
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    return(
-        <div className="buttons">
-            <button onClick={() => props.choosePerson(props.id, false)} className="dislike"/>
-            <button onClick={clearAll} className="reset"/>
-            <button onClick={() => props.choosePerson(props.id, true)} className="like"/>
+  const alertOpen = () => {
+    setAlert(true);
+  };
+
+  const alertClose = () => {
+    setTimeout(() => setAlert(false), 2500);
+  };
+
+  return (
+    <div className="buttons">
+      {alert && (
+        <div className="alertSuccess">
+          Dados de matches resetados! Novos contatos adicionados!
         </div>
-    )
-}
+      )}
+      <button
+        onClick={() => props.choosePerson(props.id, false)}
+        className="dislike"
+      />
+      <button onClick={clearAll} className="reset" />
+      <button
+        onClick={() => props.choosePerson(props.id, true)}
+        className="like"
+      />
+    </div>
+  );
+};
 
-export default Buttons
+export default Buttons;

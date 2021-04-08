@@ -3,24 +3,24 @@ import axios from "axios";
 import "../App.css";
 
 const ItsMatch = (props) => {
-
   useEffect(() => {
-      getMatches()
-  }, [])
+    getMatches();
+  }, [props.matches]);
 
   const getMatches = async () => {
     try {
-      const url ="https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/matches"
-      const res = await axios.get(url)
-      props.setMatches(res.data.matches)
+      const url =
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/matches";
+      const res = await axios.get(url);
+      props.setMatches(res.data.matches);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
   return (
     <div className="cardMatch">
-        <h3>Matches</h3>
+      <h3>Matches</h3>
       {props.matches.map((person) => {
         return (
           <div key={person.id}>
@@ -33,4 +33,4 @@ const ItsMatch = (props) => {
   );
 };
 
-export default ItsMatch
+export default ItsMatch;

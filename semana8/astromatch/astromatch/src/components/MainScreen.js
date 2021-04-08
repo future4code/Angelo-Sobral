@@ -4,12 +4,14 @@ import "../App.css";
 import Buttons from "./Buttons";
 import Setting from "../assets/img/setting.svg";
 import ItsMatch from "./ItsMatch";
+import CardProfile from "./CardProfile";
 
 const MainScreen = () => {
   const [person, setPerson] = useState({});
   const [isMatch, setIsMatch] = useState({});
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState([]);
+  const [like, setLike] = useState(false)
 
   useEffect(() => {
     getProfile();
@@ -48,62 +50,52 @@ const MainScreen = () => {
     {
       body.choice ? toggleSwipe("right") : toggleSwipe("left");
     }
+    setLike(body.choice)
   };
 
   const toggleSwipe = (dir) => {
     let card = document.querySelector(".cardProfile");
     card.classList.toggle(dir);
   };
-  
+
   const toggleMatch = () => {
-    let itsMatch = document.querySelector(".itsMatch")
-    itsMatch.classList.toggle("active")
+    let itsMatch = document.querySelector(".itsMatch");
+    itsMatch.classList.toggle("active");
   };
+
+  {isMatch && like && console.log('Deu match')}
 
   return (
     <>
-      {loading ? (
-        <div className="card">
-          <div className="settings">
-            <img className="iconSetting" src={Setting} title="Configurações" />
-            <h2>Astromatch</h2>
-            <div onClick={toggleMatch} className="matchIcon">
-              <img
-                src="https://tinderelos.files.wordpress.com/2018/07/tinder-logo.png"
-                title="Matches"
-              />
-              {matches.length > 0 
-              &&   
-              <span>
-                {matches.length}
-              </span>}
-            </div>
-          </div>
-
-          <div className="itsMatch">
-            <ItsMatch
-            matches={matches}
-            setMatches={setMatches}
+      <div className="card">
+        <div className="settings">
+          <img className="iconSetting" src={Setting} title="Configurações" />
+          <h2>Astromatch</h2>
+          <div onClick={toggleMatch} className="matchIcon">
+            <img
+              src="https://tinderelos.files.wordpress.com/2018/07/tinder-logo.png"
+              title="Matches"
             />
+            {matches.length > 0 && <span>{matches.length}</span>}
           </div>
-
-          <div className="cardProfile">
-            <img src={person.photo} />
-            <div className="info">
-              <p>
-                {person.name}, <span>{person.age}</span>
-              </p>
-              <p>{person.bio}</p>
-            </div>
-          </div>
-
-          <Buttons id={person.id} choosePerson={choosePerson} />
         </div>
-      ) : (
-        <div className="card">
+
+        <div className="itsMatch">
+          <ItsMatch matches={matches} setMatches={setMatches} />
+        </div>
+        {loading && person ? (
+          <>
+            <CardProfile person={person} />
+            <Buttons
+              id={person.id}
+              choosePerson={choosePerson}
+              getProfile={getProfile}
+            />
+          </>
+        ) : (
           <div className="cardProfile">Carregando...</div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
