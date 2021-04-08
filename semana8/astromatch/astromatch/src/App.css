@@ -29,6 +29,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
+}
+
+.itsMatch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: .4s;
+  z-index: -1;
+}
+
+.itsMatch.active {
+  display: flex;
+  transform: translateX(calc(100% + 1px));
+  opacity: 1;
 }
 
 .settings {
@@ -49,6 +65,7 @@
 }
 
 .matchIcon {
+  position: relative;
   background-color: #f4f4f4;
   width: 30px;
   height: 30px;
@@ -68,6 +85,18 @@
   transform: scale(1.3);
 }
 
+.matchIcon span {
+  position: absolute;
+  top: -5px;
+  left: -8px;
+  font-size: 10px;
+  font-weight: 500;
+  background-color: #f4f4f4;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
 .cardProfile {
   height: 75%;
   width: 85%;
@@ -78,11 +107,11 @@
 }
 
 .cardProfile.right {
-  animation: right 1s linear;
+  animation: right .6s linear;
 }
 
 .cardProfile.left {
-  animation: left 1s linear;
+  animation: left .6s linear;
 }
 
 .cardProfile img {
@@ -99,9 +128,10 @@
   }
   50% {
     transform: translateX(400px) rotate(40deg);
-    opacity: .4;
+    opacity: .2;
   }
   100% {
+    transform: translateX(400px) rotate(40deg);
     opacity: 0;
   }
 }
@@ -112,9 +142,10 @@
   }
   50% {
     transform: translateX(-400px) rotate(-40deg);
-    opacity: .4;
+    opacity: .2;
   }
   100% {
+    transform: translateX(-400px) rotate(-40deg);
     opacity: 0;
   }
 }
@@ -209,12 +240,24 @@ button:nth-of-type(2) {
   max-height: 505px;
   text-align: center;
   max-width: 404px;
+  min-width: 217px;
   background: rgba(255, 255, 255, 0.438);
   box-shadow: 0 8px 32px 0 rgba(131, 19, 122, 0.418);
   backdrop-filter: blur( 4px );
   border-radius: 20px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding: 10px 20px 0 20px;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -webkit-scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+.cardMatch:-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
 }
 
 .cardMatch > div {

@@ -6,7 +6,7 @@ const Buttons = (props) => {
 
     const clearAll = async () => {
         try {
-            const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/clear'
+            const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/clear'
             await axios.put(url)
             alert("Tudo ok")
         } catch (err) {
