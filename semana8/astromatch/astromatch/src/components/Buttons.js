@@ -12,6 +12,8 @@ const Buttons = (props) => {
       await axios.put(url);
       alertOpen();
       alertClose();
+      props.getMatches();
+      props.getProfile();
     } catch (err) {
       console.log(err);
     }
@@ -35,11 +37,13 @@ const Buttons = (props) => {
       <button
         onClick={() => props.choosePerson(props.id, false)}
         className="dislike"
+        disabled={props.isMatch}
       />
-      <button onClick={clearAll} className="reset" />
+      <button onClick={clearAll} className="reset" disabled={props.isMatch} />
       <button
         onClick={() => props.choosePerson(props.id, true)}
         className="like"
+        disabled={props.isMatch}
       />
     </div>
   );

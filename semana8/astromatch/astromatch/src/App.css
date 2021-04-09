@@ -257,6 +257,10 @@ button:nth-of-type(2) {
   transform: rotate(360deg);
 }
 
+.reset:active {
+  transform: scale(1.5);
+}
+
 .alertSuccess {
   position: fixed;
   color: #f4f4f4;

@@ -4,7 +4,7 @@ import "../App.css";
 const CardProfile = (props) => {
   return (
     <div className="cardProfile">
-      <img src={props.person.photo} alt="person"/>
+      <img src={props.person.photo} alt="person" />
       <div className="info">
         <p>
           {props.person.name}, <span>{props.person.age}</span>

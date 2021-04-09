@@ -9,13 +9,13 @@ import Match from "./Match";
 
 const MainScreen = () => {
   const [person, setPerson] = useState({});
-  const [isMatch, setIsMatch] = useState({});
+  const [isMatch, setIsMatch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
     getProfile();
-  }, [isMatch]);
+  }, []);
 
   const getProfile = async () => {
     setLoading(false);
@@ -27,6 +27,7 @@ const MainScreen = () => {
       setLoading(true);
     } catch (err) {
       console.log(err);
+      //fazer verificação do erro e criar condições de retorno
       alert(
         "Tivemos alguma pendência no servidor. Faça uma limpeza dos dados."
       );
@@ -34,7 +35,8 @@ const MainScreen = () => {
   };
 
   const choosePerson = (id, choice) => {
-    const url ="https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/choose-person";
+    const url =
+      "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/choose-person";
     const body = {
       id: id,
       choice: choice,
@@ -42,14 +44,29 @@ const MainScreen = () => {
     axios
       .post(url, body)
       .then((response) => {
-        console.log(response.data)
-        setIsMatch(response.data);
+        getProfile();
+        setIsMatch(response.data.isMatch);
       })
       .catch((err) => {
         console.log(err);
       });
-    
-      body.choice ? toggleSwipe("right") : toggleSwipe("left");
+
+    body.choice ? toggleSwipe("right") : toggleSwipe("left");
+  };
+
+  useEffect(() => {
+    getMatches();
+  }, [matches]);
+
+  const getMatches = async () => {
+    try {
+      const url =
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/angelo/matches";
+      const res = await axios.get(url);
+      setMatches(res.data.matches);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const toggleSwipe = (dir) => {
@@ -62,15 +79,16 @@ const MainScreen = () => {
     itsMatch.classList.toggle("active");
   };
 
-  // const matchClose = () => {
-  //   setTimeout(() => setLike(false), 1000);
-  // };
-
   return (
     <>
       <div className="card">
         <div className="settings">
-          <img className="iconSetting" src={Setting} title="Configurações" alt="Settings"/>
+          <img
+            className="iconSetting"
+            src={Setting}
+            title="Configurações"
+            alt="Settings"
+          />
           <h2>Astromatch</h2>
           <div onClick={toggleMatch} className="matchIcon">
             <img
@@ -87,16 +105,32 @@ const MainScreen = () => {
         </div>
         {loading && person ? (
           <>
-            {isMatch.isMatch ? <Match closeMatch={setIsMatch} person={matches[matches.length-1].photo}/> :
-            <CardProfile person={person} />}
+            {isMatch && matches.length ? (
+              <Match
+                closeMatch={setIsMatch}
+                person={matches[matches.length - 1].photo}
+              />
+            ) : (
+              <CardProfile person={person} />
+            )}
             <Buttons
               id={person.id}
               choosePerson={choosePerson}
               getProfile={getProfile}
+              isMatch={isMatch}
+              getMatches={getMatches}
             />
           </>
         ) : (
+          <>
           <div className="cardProfile">Carregando...</div>
+          <Buttons
+              choosePerson={choosePerson}
+              getProfile={getProfile}
+              isMatch={isMatch}
+              getMatches={getMatches}
+            />
+          </>
         )}
       </div>
     </>
