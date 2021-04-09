@@ -5,7 +5,7 @@ import Buttons from "./Buttons";
 import Setting from "../assets/img/setting.svg";
 import ItsMatch from "./ItsMatch";
 import CardProfile from "./CardProfile";
-import Match from "./Match";
+import MatchScreen from "./MatchScreen";
 
 const MainScreen = () => {
   const [person, setPerson] = useState({});
@@ -106,7 +106,7 @@ const MainScreen = () => {
         {loading && person ? (
           <>
             {isMatch && matches.length ? (
-              <Match
+              <MatchScreen
                 closeMatch={setIsMatch}
                 person={matches[matches.length - 1].photo}
               />

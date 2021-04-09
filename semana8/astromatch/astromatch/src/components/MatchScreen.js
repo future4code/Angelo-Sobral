@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-const Match = (props) => {
+const MatchScreen = (props) => {
   return (
     <div className="cardItsMatch">
       <button onClick={() => props.closeMatch(false)} className="closeMatch">X</button>
@@ -15,4 +15,4 @@ const Match = (props) => {
   );
 };
 
-export default Match;
+export default MatchScreen;
