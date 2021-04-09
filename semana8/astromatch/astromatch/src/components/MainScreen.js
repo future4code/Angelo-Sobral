@@ -5,13 +5,13 @@ import Buttons from "./Buttons";
 import Setting from "../assets/img/setting.svg";
 import ItsMatch from "./ItsMatch";
 import CardProfile from "./CardProfile";
+import Match from "./Match";
 
 const MainScreen = () => {
   const [person, setPerson] = useState({});
   const [isMatch, setIsMatch] = useState({});
   const [loading, setLoading] = useState(false);
   const [matches, setMatches] = useState([]);
-  const [like, setLike] = useState(false)
 
   useEffect(() => {
     getProfile();
@@ -42,15 +42,14 @@ const MainScreen = () => {
     axios
       .post(url, body)
       .then((response) => {
+        console.log(response.data)
         setIsMatch(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    {
+    
       body.choice ? toggleSwipe("right") : toggleSwipe("left");
-    }
-    setLike(body.choice)
   };
 
   const toggleSwipe = (dir) => {
@@ -63,18 +62,21 @@ const MainScreen = () => {
     itsMatch.classList.toggle("active");
   };
 
-  {isMatch && like && console.log('Deu match')}
+  // const matchClose = () => {
+  //   setTimeout(() => setLike(false), 1000);
+  // };
 
   return (
     <>
       <div className="card">
         <div className="settings">
-          <img className="iconSetting" src={Setting} title="Configurações" />
+          <img className="iconSetting" src={Setting} title="Configurações" alt="Settings"/>
           <h2>Astromatch</h2>
           <div onClick={toggleMatch} className="matchIcon">
             <img
               src="https://tinderelos.files.wordpress.com/2018/07/tinder-logo.png"
               title="Matches"
+              alt="Logo Tinder"
             />
             {matches.length > 0 && <span>{matches.length}</span>}
           </div>
@@ -85,7 +87,8 @@ const MainScreen = () => {
         </div>
         {loading && person ? (
           <>
-            <CardProfile person={person} />
+            {isMatch.isMatch ? <Match closeMatch={setIsMatch} person={matches[matches.length-1].photo}/> :
+            <CardProfile person={person} />}
             <Buttons
               id={person.id}
               choosePerson={choosePerson}

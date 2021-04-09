@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import "../App.css";
 
@@ -24,7 +24,7 @@ const ItsMatch = (props) => {
       {props.matches.map((person) => {
         return (
           <div key={person.id}>
-            <img className="photoMatch" src={person.photo} />
+            <img className="photoMatches" src={person.photo} alt="person"/>
             <p>{person.name}</p>
           </div>
         );

@@ -22,7 +22,7 @@ const Buttons = (props) => {
   };
 
   const alertClose = () => {
-    setTimeout(() => setAlert(false), 2500);
+    setTimeout(() => setAlert(false), 3000);
   };
 
   return (
