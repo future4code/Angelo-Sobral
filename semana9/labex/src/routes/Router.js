@@ -5,8 +5,8 @@ import ApplyFormsPage from "../pages/ApplyForm";
 import CreateTripPage from "../pages/CreateTrip";
 import HomePage from "../pages/Home";
 import ListTripPage from "../pages/ListTrip";
-import LoginPage from "../pages/login";
-import TripDetailsPage from "../pages/tripdetails";
+import LoginPage from "../pages/Login";
+import TripDetailsPage from "../pages/TtripDetails";
 
 const Router = () => {
   return (
