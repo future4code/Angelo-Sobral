@@ -1,10 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import BaseBg from "../assets/images/bg-base.png"
 import TopBg from "../assets/images/bg-top.png"
 import MoonBg from "../assets/images/moon.png"
-import { goToListTripPage } from "../routes/coordinator";
+import {goToListTripPage, goToLoginPage } from "../routes/coordinator";
 
 const HomePage = () => {
     const history = useHistory()
@@ -17,9 +17,12 @@ const HomePage = () => {
             <>
             <h1>Sejam bem vindos a LabeX!</h1>
             <p>Somos a melhor agência de viagens espacias de toda via lactea!</p>
-            <p>Se você sempre sonhou em fazer uma viagem espacial, chegou o momento. Conheça nossos destinos, candidate-se em uma de nossas aventuras, e nos convença a escolher você para reinventar o conceito de viagens ao redor do mundo!</p>
+            <p>Se você sempre sonhou em fazer uma viagem espacial, chegou o momento. Conheça nossos destinos, candidate-se em uma de nossas aventuras, e nos convença a escolher você para reinventar o conceito de viagens ao redor da galáxia!</p>
             </>
+            <DivButtons>
             <button onClick={()=> {goToListTripPage(history)}}>Nossas Viagens</button>
+            <button onClick={()=> {goToLoginPage(history)}}>Acesso do Admin</button>
+            </DivButtons>
         </MainCard>
     </Main>
     )
@@ -119,6 +122,12 @@ button{
         transform: scale(1.1);
     }
 }
+`
+
+const DivButtons = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-between;
 `
 
 const MoonIMG = styled.img`
