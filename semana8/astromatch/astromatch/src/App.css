@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(333deg,#ff7854,#fd267d);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.card {
+  height: 76%;
+  min-height: 505px;
+  width: 28%;
+  max-width: 404px;
+  min-width: 350px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.438);
+  box-shadow: 0 8px 32px 0 rgba(131, 19, 122, 0.418);
+  backdrop-filter: blur( 4px );
+  border-radius: 20px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.itsMatch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: .4s;
+  z-index: -1;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.itsMatch.active {
+  display: flex;
+  transform: translateX(calc(100% + 1px));
+  opacity: 1;
+  max-height: 100%;
+  overflow:visible;
+}
+
+.settings {
+  position: absolute;
+  top: 12px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings .iconSetting {
+  width: 30px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.settings .iconSetting:hover {
+  transform: rotate(90deg);
+}
+
+.matchIcon {
+  position: relative;
+  background-color: #f4f4f4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.matchIcon img {
+  width: 30px;
+  transition: .3s;
+}
+
+.matchIcon img:hover {
+  transform: scale(1.3);
+}
+
+.matchIcon span {
+  position: absolute;
+  top: -5px;
+  left: -8px;
+  font-size: 10px;
+  font-weight: 500;
+  background-color: #f4f4f4;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.cardProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+  width: 85%;
+  background-color: #f4f4f4;
+  border-radius: 10px 10px;
+  box-shadow: 0px 4px 8px rgba(131, 19, 122, 0.418);
+  position: absolute;
+  top: 10%;
+  transition: .3s ease all;
+}
+
+.cardProfile.right {
+  animation: right .6s linear;
+}
+
+.cardProfile.left {
+  animation: left .6s linear;
+}
+
+.cardProfile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: linear-gradient(133deg,#ff7854,#fd267d);
+  border-radius: 10px;
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(0px) rotate(15deg)
+  }
+  50% {
+    transform: translateX(400px) rotate(40deg);
+    opacity: .2;
+  }
+  100% {
+    transform: translateX(400px) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(0px) rotate(-15deg)
+  }
+  50% {
+    transform: translateX(-400px) rotate(-40deg);
+    opacity: .2;
+  }
+  100% {
+    transform: translateX(-400px) rotate(-40deg);
+    opacity: 0;
+  }
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: left;
+  border-radius: 0 0 10px 10px;
+  color: #f4f4f4;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5382528011204482) 50%, rgba(0,0,0,0.8099614845938375) 100%);
+}
+
+.info :first-child {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.info :nth-child(2){
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* =========== Botões ============== */
+
+.buttons {
+  position: absolute;
+  bottom: 12px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+
+button:nth-of-type(2) {
+  height: 40px;
+  width: 40px;
+}
+
+.like {
+  background: url(https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/green_webpict35_1484337168-1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 5px white solid;
+  transition: .3s;
+  box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.618);
+}
+
+.like:hover, .dislike:hover {
+  transform: scale(1.12);
+}
+
+.dislike:active {
+  transform: scale(1.6);
+}
+
+.like:active {
+  background-color: green;
+  border: green;
+}
+
+.dislike {
+  background: url(https://image.flaticon.com/icons/png/512/458/458594.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: .3s;
+  box-shadow: 0 4px 10px 0 rgba(131, 19, 122, 0.618);
+}
+
+.reset {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Flat_restart_icon.svg/1024px-Flat_restart_icon.svg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 5px white solid;
+  transition: .4s;
+  box-shadow: 0 2px 2px 0 rgba(131, 19, 122, 0.618);
+}
+
+.reset:hover {
+  transform: rotate(360deg);
+}
+
+.reset:active {
+  transform: scale(1.5);
+}
+
+.alertSuccess {
+  position: fixed;
+  color: #f4f4f4;
+  font-weight: 600;
+  border-radius: 10px;
+  top: 0;
+  transform: translateY(-60px);
+  background-color: #4caf50;
+  width: 140%;
+  padding: 10px;
+  transition: .6s;
+  box-shadow: 0 2px 2px 0 rgba(131, 19, 122, 0.618);
+}
+
+/* ============Tela de match================ */
+
+.cardMatch {
+  text-align: center;
+  max-width: 404px;
+  min-width: 217px;
+  background: rgba(255, 255, 255, 0.438);
+  box-shadow: 0 8px 32px 0 rgba(131, 19, 122, 0.418);
+  backdrop-filter: blur( 4px );
+  border-radius: 20px;
+  border: 4px solid rgba( 255, 255, 255, 0.18 );
+  padding: 10px 20px 0 20px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.cardMatch::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+.cardMatch::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+.cardMatch::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 50px;
+}
+
+.cardMatch::-webkit-scrollbar-track{
+  margin: 15px;
+}
+
+.cardMatch > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cardMatch h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.photoMatches {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.cardItsMatch {
+  transform: translateY(-3%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  width: 85%;
+  background-color: #f4f4f4;
+  border-radius: 10px 10px;
+  box-shadow: 0px 4px 8px rgba(131, 19, 122, 0.418);
+  position: relative;
+  background: linear-gradient(133deg,#ff7854,#fd267d);
+  transition: .3s ease all;
+}
+
+.photoItsMatch {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.matchImg {
+  object-fit: cover;
+  filter: invert();
+  width: 100%;
+}
+
+.closeMatch {
+  font-weight: 700;
+  position: absolute;
+  top: 10px;
+  width: 30px;
+  right: 10px;
+  height: 30px;
+}
