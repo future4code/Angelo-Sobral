@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import styled from "styled-components"
-import { URL_TRIPS } from "../api/apiUtils";
 import { goToApplyFormPage } from "../routes/coordinator";
 import { useHistory } from "react-router-dom";
+import { useRequestData } from "../hooks/useRequestData";
 
 const ListTripPage = () => {
-    const [trips, setTrips] = useState([])
     const history = useHistory()
-
-    useEffect(() => {
-        getTrips()
-    }, [])
-
-    const getTrips = () => {
-        axios.get(URL_TRIPS)
-        .then((res) => {
-            setTrips(res.data.trips)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
+    const data = useRequestData('/trips', [])
 
     return (
     <>
     <h1>Página de  Listas de Viagens</h1>
     <button onClick={()=> goToApplyFormPage(history)}>Candidata-se</button>
     <MainTripCard>
-        {trips.map((trip) => {
+        {data.trips && data.trips.map((trip) => {
             return (<DetailsCard key={trip.id}>
                 <p>Viagem: {trip.name}</p>
                 <p>Planeta: {trip.planet}</p>

@@ -4,6 +4,7 @@ import BaseBg from "../assets/images/login.jpg"
 import { useHistory } from "react-router-dom";
 import axios from "axios"
 import { URL_LOGIN } from "../api/apiUtils";
+import { goToAdminHomePage } from "../routes/coordinator";
 
 const LoginPage = () => {
     const history = useHistory()
@@ -24,7 +25,7 @@ const LoginPage = () => {
         axios.post(URL_LOGIN, body)
         .then((res) => {
             window.localStorage.setItem("tokenLabeX", res.data.token)
-            history.push('/admin/trips/list')
+            goToAdminHomePage(history)
         })
         .catch((err) => {
             console.log(err)
