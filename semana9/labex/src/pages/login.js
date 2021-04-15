@@ -8,21 +8,17 @@ import { URL_LOGIN } from "../api/apiUtils";
 const LoginPage = () => {
     const history = useHistory()
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const handleEmail= e => {
-        setEmail(e.target.value)
-    }
-
-    const handlePassword = e => {
-        setPassword(e.target.value)
+    const [input, setIinput] = useState({email: '', password: ''})
+   
+    const onChange = (e) => {
+        const {name, value} = e.target
+        setIinput({...input, [name]: value})
     }
 
     const login = () => {
         const body = {
-            email: email,
-            password: password
+            email: input.email,
+            password: input.password
         }
 
         axios.post(URL_LOGIN, body)
@@ -32,6 +28,7 @@ const LoginPage = () => {
         })
         .catch((err) => {
             console.log(err)
+            setIinput({email: '', password: ''})
         })
 
     }
@@ -40,8 +37,8 @@ const LoginPage = () => {
     <MainContainer>
         <CardLogin>
             <h1>LabeX - Login</h1>
-            <input value={email} onChange={handleEmail} placeholder="E-mail"/>
-            <input value={password} onChange={handlePassword} placeholder="Senha"/>
+            <input name="email" value={input.email} onChange={onChange} placeholder="E-mail"/>
+            <input name="password" value={input.password} onChange={onChange} placeholder="Senha"/>
             <button onClick={login}>Entrar</button>
         </CardLogin>
     </MainContainer>
