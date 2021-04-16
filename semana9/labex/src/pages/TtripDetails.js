@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { useProtectedPage } from "../hooks/useProtectedPage";
 import axios from "axios";
-import { headers, URL_TRIPS, URL_TRIPS_DETAIL } from "../api/apiUtils";
+import { headers, URL_TRIPS, URL_TRIPS_DETAIL } from "../utils/apiUtils";
 
 const TripDetailsPage = () => {
   const history = useHistory();
@@ -49,7 +49,7 @@ const TripDetailsPage = () => {
         <p>Duração: {trip.durationInDays} dias</p>
         <hr />
         {trip.candidates && trip.candidates.length > 0 ? (
-          <p>
+          <>
             <h2>{"Candidatos(as) aguardando aprovação"}</h2>
             {trip.candidates.map((data) => {
               return (
@@ -68,10 +68,11 @@ const TripDetailsPage = () => {
                 </>
               );
             })}
-          </p>
-        ) : (
+          </>
+        ) : (<>
+          <h2>{"Candidatos(as) aguardando aprovação"}</h2>
           <p>Nenhuma candidatura para esta viagem</p>
-        )}
+        </>)}
         <hr />
         {trip.approved && trip.approved.length > 0 ? (
           <p>
