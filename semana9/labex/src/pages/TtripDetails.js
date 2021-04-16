@@ -48,7 +48,7 @@ const TripDetailsPage = () => {
         <p>Data da partida: {trip.date}</p>
         <p>Duração: {trip.durationInDays} dias</p>
         <hr />
-        {trip.candidates && trip.candidates.length > 0 ? (
+        {trip.candidates && trip.candidates.length ? (
           <>
             <h2>{"Candidatos(as) aguardando aprovação"}</h2>
             {trip.candidates.map((data) => {

@@ -17,6 +17,7 @@ const CreateTripPage = () => {
             onSubmit()
         }
     }
+    
     const onSubmit = (event) => {
         // event.preventDefault()
         createTrip()
@@ -36,9 +37,8 @@ const CreateTripPage = () => {
 
     }
 
-    const today = new Date()
-    const dateToday = today.getFullYear() + "-" + ("0"+ (today.getMonth()+1)) + "-" + today.getDate()
-
+    const dateToday = new Date().toISOString().slice(0,10)
+    
     return (<>
     <h1>Página de criar Viagens</h1>
     <form onSubmit={formSubmit}>
