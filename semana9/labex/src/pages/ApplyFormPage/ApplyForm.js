@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
-import { URL_TRIPS } from "../utils/apiUtils";
-import {countries} from "../utils/countries"
-import { useForm } from "../hooks/useForm";
-import { useRequestData } from "../hooks/useRequestData";
+import { URL_TRIPS } from "../../utils/apiUtils";
+import {countries} from "../../utils/countries"
+import { useForm } from "../../hooks/useForm";
+import { useRequestData } from "../../hooks/useRequestData";
 
 const ApplyFormsPage = () => {
     const data = useRequestData('/trips', [])

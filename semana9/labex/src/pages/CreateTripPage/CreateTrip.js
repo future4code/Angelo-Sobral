@@ -1,8 +1,8 @@
 import React from "react";
-import { useProtectedPage } from "../hooks/useProtectedPage";
-import { useForm } from "../hooks/useForm";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { headers, URL_TRIPS } from "../utils/apiUtils";
+import { headers, URL_TRIPS } from "../../utils/apiUtils";
 import styled from "styled-components"
 
 const CreateTripPage = () => {
@@ -19,7 +19,6 @@ const CreateTripPage = () => {
     }
     
     const onSubmit = (event) => {
-        // event.preventDefault()
         createTrip()
         resetForm()
         console.log("dados a ser eviado", form)

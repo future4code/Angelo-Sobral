@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components"
-import { goToApplyFormPage } from "../routes/coordinator";
+import { goToApplyFormPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "../hooks/useRequestData";
+import { useRequestData } from "../../hooks/useRequestData";
 
 const ListTripPage = () => {
     const history = useHistory()
