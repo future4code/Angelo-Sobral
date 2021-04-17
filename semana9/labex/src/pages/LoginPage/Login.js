@@ -10,15 +10,19 @@ const LoginPage = () => {
   const history = useHistory();
   const [form, onChange, resetForm] = useForm({ email: "", password: "" });
 
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault()
     axios
       .post(URL_LOGIN, form)
       .then((res) => {
         window.localStorage.setItem("tokenLabeX", res.data.token);
+        window.localStorage.setItem("emailLogin", form.email);
         goToAdminHomePage(history);
+        console.log('login feito')
       })
       .catch((err) => {
         console.log(err);
+        alert("Este e-mail não tem autorização para acessar est área! Entre em contato com o desenvolvedor.")
         resetForm();
       });
   };

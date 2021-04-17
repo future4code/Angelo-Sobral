@@ -16,7 +16,7 @@ const HomePage = () => {
       <MainCard>
         <>
           <h1>Sejam bem vindos a LabeX!</h1>
-          <p>Somos a melhor agência de viagens espacias de toda via lactea!</p>
+          <p>Somos a melhor agência de viagens espaciais de toda via lactea!</p>
           <p>
             Se você sempre sonhou em fazer uma viagem espacial, chegou o
             momento. Conheça nossos destinos, candidate-se em uma de nossas

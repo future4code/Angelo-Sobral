@@ -18,7 +18,7 @@ const CreateTripPage = () => {
         }
     }
     
-    const onSubmit = (event) => {
+    const onSubmit = () => {
         createTrip()
         resetForm()
         console.log("dados a ser eviado", form)
