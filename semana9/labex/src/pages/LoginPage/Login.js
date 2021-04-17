@@ -28,23 +28,32 @@ const LoginPage = () => {
       <CardLogin>
         <h1>LabeX - Login</h1>
         <form onSubmit={login}>
-        <input
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={onChange}
-          placeholder="E-mail"
-        />
-        <input
-          required
-          name="password"
-          type="password"
-          value={form.password}
-          onChange={onChange}
-          placeholder="Senha"
-        />
+        <div>
+          <input
+            required
+            pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={onChange}
+          />
+          <span></span> {/* para animação no css*/}
+          <label>E-mail</label>
+        </div>
+
+        <div>
+          <input
+            required
+            pattern="^.{6,}$"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={onChange}
+          />
+          <span></span> {/* para animação no css*/}
+          <label>Senha</label>
+        </div>
+
         <button>Entrar</button>
         </form>
       </CardLogin>

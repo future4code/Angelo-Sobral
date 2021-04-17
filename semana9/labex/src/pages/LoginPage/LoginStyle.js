@@ -31,7 +31,9 @@ export const CardLogin = styled.div`
   border: 1px solid #f4f4f4;
 
   h1 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    color: #2f0444;
+    font-size: 36px;
 
     @media (max-width: 1024px) {
       font-size: 24px;
@@ -50,18 +52,74 @@ export const CardLogin = styled.div`
     align-items: center;
   }
 
-  input {
-    width: 80%;
-    outline: none;
-    padding: 5px 10px;
-    border: none;
-    border-bottom: 2px solid #1a1a1a;
-    background-color: transparent;
+  div {
+    position: relative;
+    /* background-color: #f4f4f4; */
+    border-radius: 5px;
+    height: 50px;
+    width: 90%;
     margin-bottom: 30px;
-    ::placeholder{
-      color: #1a1a1a;
-      font-size: 16px;
+    box-shadow: 0px 0px 10px rgba(0,0,0, .4);
+    backdrop-filter: blur(4px);
+    background: hsla(0, 0%, 70%, 0.338);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 6px;
+  }
+
+  input {
+    width: 95%;
+    outline: none;
+    border: none;
+    height: 30px;
+    border-bottom: 2px solid #1a1a1a;
+    background: transparent;
+  
+    :focus ~ label, :valid ~ label {
+      transform: translateY(-15px) scale(.7);
+      left: 3px;
+      font-weight: 500;
+      color: #2f0444;
     }
+
+    :focus ~ span::before, :valid ~ span::before {
+      transform: scale(1)
+    }
+
+    :valid ~ span::before {
+      background: green;
+    }
+
+    :valid ~ label {
+      color: green;
+    }
+  }
+
+  span {
+    position: absolute;
+    bottom: 6px;
+    height: 2px;
+    width: 95%;
+    background: #5b5b5b;
+
+    ::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #3a0555;
+      transform: scale(0);
+      transition: .5s all ease;
+    }
+  }
+
+  label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    transition: .3s all ease;
+    pointer-events: none;
   }
 
   button {
@@ -85,7 +143,8 @@ export const CardLogin = styled.div`
     }
 
     :active {
-      transform: scale(1.1);
+      transform: translateY(2px);
+      box-shadow: none;
     }
   }
 `;
