@@ -2,7 +2,7 @@ import React from "react";
 import { goToApplyFormPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import { useRequestData } from "../../hooks/useRequestData";
-import { DetailsCard, Main, MainContainer, MainTripCard } from "./style";
+import { DetailsCard, Main, MainContainer, MainTripCard, Loading } from "./style";
 
 const ListTripPage = () => {
     const history = useHistory()
@@ -15,7 +15,7 @@ const ListTripPage = () => {
     
     <MainTripCard>
     
-        {data.trips && data.trips.map((trip) => {
+        {data.trips ? data.trips.map((trip) => {
             return (<DetailsCard key={trip.id}>
                 <p><strong>Viagem:</strong> {trip.name}</p>
                 <p><strong>Planeta:</strong> {trip.planet}</p>
@@ -24,7 +24,7 @@ const ListTripPage = () => {
                 <p><strong>Duração:</strong> {trip.durationInDays} dias</p>
                 <button onClick={()=> goToApplyFormPage(history)}>Candidatar-se</button>
             </DetailsCard>)
-        })}
+        }): <DetailsCard><Loading>Carregando...</Loading></DetailsCard>}
         
     </MainTripCard>
     </MainContainer>

@@ -28,23 +28,23 @@ const CardAdminDetails = (props) => {
     <CardContainer>
       <h3>Viagens Programadas:</h3>
       <OverflowArea>
-      {data.trips &&
-        data.trips.map((trip) => {
+      {data.trips ?
+        (data.trips.map((trip) => {
           return (
-            <CardDetails>
+            <CardDetails key={trip.id}>
               <p>{trip.name}</p>
               <div>
               <button onClick={() => goToTripDetailsPage(history, trip.id)} title="Detalhes da Viagem">
-                <img src={detailsButton} />
+                <img src={detailsButton} alt="details button"/>
               </button>
 
               <button onClick={() => deleteTrip(trip.id)} title="Deletar Viagem">
-                <img src={deleteButton}/>
+                <img src={deleteButton} alt="delete button"/>
               </button>
               </div>
             </CardDetails>
           );
-        })}
+        })) : <Loading>Carregando...</Loading>}
         </OverflowArea>
     </CardContainer>
   );
@@ -133,4 +133,10 @@ transition: .3s all ease;
     width: 30px;
   }
 }
+`
+const Loading = styled.div`
+height:100%;
+display: flex;
+align-items: center;
+text-align: center;
 `

@@ -7,12 +7,22 @@ const translate = keyframes`
 }
 
 100% {
-    transform: translateX(-200px) translateY(300px)
+    transform: translateX(-200px) translateY(200px)
+}
+`;
+
+const translateMobile = keyframes`
+0% {
+    transform: translateX(750%) translateY(-310px) rotate(-130deg) ;
+}
+
+100% {
+    transform: translateX(-200px) translateY(200px)
 }
 `;
 
 export const Main = styled.main`
-  background: url(${BaseBg}) no-repeat;
+  background: url(${BaseBg}) no-repeat center;
   background-size: cover;
   height: 100vh;
   position: relative;
@@ -83,6 +93,11 @@ export const MainCard = styled.div`
     cursor: pointer;
     transition: 0.3s;
 
+    @media(max-width: 450px) {
+    font-size: 14px;
+    padding: 12px;
+    }
+
     :hover {
       background-color: #3a0555;
       box-shadow: 0 4px 8px 0 rgb(0 9 2 / 52%);
@@ -108,20 +123,9 @@ export const MoonIMG = styled.img`
   left: 30px;
   animation: ${translate} 30s linear infinite;
   z-index: 100;
-`;
 
-export const TopIMG = styled.img`
-  object-fit: cover;
-  position: absolute;
-  top: -110px;
-  left: -110px;
-  z-index: -2;
+  @media(max-width: 450px) {
+    animation: ${translateMobile} 12s linear infinite;
+    }
 
-  @media (min-width: 1440px) {
-    width: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 1px;
-    left: 0;
-  }
 `;

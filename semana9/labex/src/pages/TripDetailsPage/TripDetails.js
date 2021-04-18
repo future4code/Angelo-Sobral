@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import axios from "axios";
-import { headers, URL_TRIPS_DETAIL } from "../../utils/apiUtils";
+import { URL_TRIPS_DETAIL } from "../../utils/apiUtils";
 import CardTripDetail from "../../components/CardTripDetails";
 import HeaderAdmin from "../../components/HeaderAdmin";
 import styled from "styled-components";
@@ -13,17 +13,23 @@ import bgMarte from "../../assets/images/marte.jpg"
 import bgJupiter from "../../assets/images/jupiter.jpg"
 import bgSaturno from "../../assets/images/saturno.jpg"
 
+// para usar como props no HeaderAdmin
 const h1 = "Detalhes da Viagem"
 
 const TripDetailsPage = () => {
-  
-  const params = useParams();
   const [trip, setTrip] = useState({});
+  const params = useParams();
+  
   useProtectedPage();
 
   useEffect(() => {
     getTripDetail(params.id);
-  }, [params.id, trip]);
+  }, [params.id, trip]); // quando coloco tirp fica dando loop e aparece menagem de vazamento de memória
+
+  const headers = { 
+    headers: { auth: window.localStorage.getItem("tokenLabeX")
+    }
+  }
 
   const getTripDetail = (id) => {
     axios
@@ -32,19 +38,20 @@ const TripDetailsPage = () => {
         setTrip(res.data.trip);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log("erro da requisição", err.response);
       });
   };
 
+  //para alterar background de acordo com tripId
   const bgById = {
-    a9PnhapPqRcGaHRpfUOqn: `${bgNetuno}`, // netuno
-    aBgyaMoTD7iKcgziE7HQn: `${bgPlutao}`, // plutao
-    a6y1YSJdfWtjAi1HHQDqj: `${bgVenus}`, // venus
-    aFTugABO1Tm7sJS1dD4nE: `${bgMarte}`, // marte
-    aH3gjzIp4CsI52nd2dHkd: `${bgJupiter}`, // jupiter
+    a9PnhapPqRcGaHRpfUOqn: `${bgNetuno}`,
+    aBgyaMoTD7iKcgziE7HQn: `${bgPlutao}`,
+    a6y1YSJdfWtjAi1HHQDqj: `${bgVenus}`,
+    aFTugABO1Tm7sJS1dD4nE: `${bgMarte}`,
+    aH3gjzIp4CsI52nd2dHkd: `${bgJupiter}`, 
     aMS8bMezO7khOQyeUv79Q: `${bgSaturno }`
   }
-
+  
   return (
     <Main bgImg={bgById["a"+trip.id]}>
       <HeaderAdmin h1={h1} />

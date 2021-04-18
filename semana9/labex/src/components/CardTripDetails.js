@@ -1,10 +1,15 @@
 import React from "react";
-import { headers, URL_TRIPS } from "../utils/apiUtils";
+import { URL_TRIPS } from "../utils/apiUtils";
 import axios from "axios";
 import styled from "styled-components";
 
 const CardTripDetail = (props) => {
   const trip = props.trip
+
+  const headers = { 
+    headers: { auth: window.localStorage.getItem("tokenLabeX")
+    }
+  }
 
   const decideApproved = (tripId, candidateId, choice) => {
     const body = {
@@ -14,11 +19,25 @@ const CardTripDetail = (props) => {
       `${URL_TRIPS}/${tripId}/candidates/${candidateId}/decide`,
       body,
       headers
-    );
+    )
+    .then((res)=> {
+      if (choice) { 
+        alert('Candidato aprovado com sucesso!')
+      } else {
+        alert('Candidato reprovado com sucesso!')
+      }
+
+    })
+    .catch((err)=> {
+      console.log('erro', err.response)
+    })
   };
 
   return (
     <MainCard>
+      {trip.name
+      ?
+      (<>
       <CardTrip>
         <h1>{trip.name}</h1>
         <p>Planeta: {trip.planet}</p>
@@ -32,7 +51,7 @@ const CardTripDetail = (props) => {
           <h2>{"Candidatos aguardando aprovação"}</h2>
           {trip.candidates.map((data) => {
             return (
-              <>
+              <div key={data.id}>
                 <p>Nome: {data.name}</p>
                 <p>Idade: {data.age}</p>
                 <p>Texto da Candidatura: {data.applicationText}</p>
@@ -41,8 +60,8 @@ const CardTripDetail = (props) => {
                 <button onClick={() => decideApproved(trip.id, data.id, true)}>
                   Aprovar
                 </button>
-                <button>Reprovar</button>
-              </>
+                <button onClick={() => decideApproved(trip.id, data.id, false)}>Reprovar</button>
+              </div>
             );
           })}
         </CardPending>
@@ -58,7 +77,7 @@ const CardTripDetail = (props) => {
           <h2>{"Candidatos aprovados"}</h2>
           <ul>
             {trip.approved.map((data) => {
-              return <li>{data.name}</li>;
+              return <li key={data.id}>{data.name}</li>;
             })}
           </ul>
         </CardApproved>
@@ -68,6 +87,9 @@ const CardTripDetail = (props) => {
           Nenhuma candidatura aprovada até o momento.
         </CardApproved>
       )}
+      </>)
+      :
+      (<Loading>Carregando...</Loading>)}
     </MainCard>
   );
 };
@@ -187,3 +209,10 @@ const CardApproved = styled.div`
     font-size: 18px;
   }
 `;
+
+const Loading = styled.div`
+height:100%;
+display: flex;
+align-items: center;
+text-align: center;
+`

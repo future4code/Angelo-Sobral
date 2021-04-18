@@ -76,7 +76,7 @@ export const CardLogin = styled.div`
     background: transparent;
   
     :focus ~ label, :valid ~ label {
-      transform: translateY(-15px) scale(.7);
+      transform: translateY(-18px) scale(.7);
       left: 3px;
       font-weight: 500;
       color: #2f0444;

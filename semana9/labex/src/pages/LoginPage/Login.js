@@ -18,7 +18,6 @@ const LoginPage = () => {
         window.localStorage.setItem("tokenLabeX", res.data.token);
         window.localStorage.setItem("emailLogin", form.email);
         goToAdminHomePage(history);
-        console.log('login feito')
       })
       .catch((err) => {
         console.log(err);

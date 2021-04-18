@@ -42,7 +42,8 @@ flex-wrap: wrap;
 backdrop-filter: blur(3px);
   background: hsla(0, 0%, 100%, 0.438);
   box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.718);
-max-height: 500px;
+max-height: 80%;
+min-width: 350px;
 margin-top: 100px;
 padding: 5px;
 overflow-y: scroll;
@@ -91,6 +92,11 @@ button{
     margin-bottom: 10px;
     transition: .3s all ease;
 
+    @media(max-width: 450px) {
+    font-size: 15px;
+    padding: 2px 5px;
+    }
+
     :hover {
       background-color: #3a0555;
       box-shadow: 0 4px 8px 0 rgb(0 9 2 / 52%);
@@ -102,4 +108,12 @@ button{
       box-shadow: none;
     }
   }
+
+  
+`
+export const Loading = styled.div`
+height:100%;
+display: flex;
+align-items: center;
+text-align: center;
 `

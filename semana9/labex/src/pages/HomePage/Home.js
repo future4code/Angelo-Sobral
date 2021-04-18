@@ -1,18 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import TopBg from "../../assets/images/bg-top.png";
 import MoonBg from "../../assets/images/moon.png";
 import { goToListTripPage, goToLoginPage } from "../../routes/coordinator";
-import { Main, MoonIMG, TopIMG, MainCard, DivButtons } from  "./HomeStyle"
+import { Main, MoonIMG, MainCard, DivButtons } from  "./HomeStyle"
 
 const HomePage = () => {
   const history = useHistory();
-  const token = window.localStorage.getItem("tokenLabeX");
 
+  const token = window.localStorage.getItem("tokenLabeX");
+  
   return (
     <Main>
       <MoonIMG src={MoonBg} alt="moon" />
-      {/* <TopIMG src={TopBg} alt="space" /> */}
       <MainCard>
         <>
           <h1>Sejam bem vindos a LabeX!</h1>

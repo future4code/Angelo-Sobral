@@ -5,7 +5,11 @@ import { goToCreteTripPage, goToHomePage } from "../routes/coordinator";
 
 const HeaderAdmin = (props) => {
   const history = useHistory()
-  const logout = props.logout
+
+  const logout = () => {
+    window.localStorage.removeItem("tokenLabeX")
+    history.push("/login")
+  }
 
   return (
     <Header>

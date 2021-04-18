@@ -28,18 +28,17 @@ const CreateTripPage = () => {
   const onSubmit = () => {
     createTrip();
     resetForm();
-    console.log("dados a ser eviado", form);
   };
 
+  //para criar uma nova viagem, deve ser adicionado um backround url manualmente na TripDetailsPage
   const createTrip = () => {
     axios
       .post(URL_TRIPS, form, headers)
       .then((res) => {
         alert("Viagem criada com sucesso! Agora é só aguardar a tripulação!");
-        console.log("deu certo", res);
       })
       .catch((err) => {
-        console.log("deu ruim", err);
+        console.log("Mensagem de erro", err);
       });
   };
 
