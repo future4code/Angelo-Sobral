@@ -26,6 +26,8 @@ background: hsla(0, 0%, 70%, 0.7);
 padding: 20px;
 font-size: 20px;
 border-radius: 5px;
+color: #2f0444;
+font-weight: 500;
 
 span{
   font-weight: bold;

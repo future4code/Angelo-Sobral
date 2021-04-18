@@ -3,69 +3,113 @@ import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { headers, URL_TRIPS } from "../../utils/apiUtils";
-import styled from "styled-components"
+import { FormArea, Input, Main, MainContainer } from "./style";
+import HeaderCreateTrip from "../../components/HeaderCreateTrip";
 
 const CreateTripPage = () => {
-    const [form, onChange, resetForm] = useForm({name: '', description: '', planet:'', date:'', durationInDays:''})
-    useProtectedPage()
+  const [form, onChange, resetForm] = useForm({
+    name: "",
+    description: "",
+    planet: "",
+    date: "",
+    durationInDays: "",
+  });
+  useProtectedPage();
 
-    const formSubmit = (e) => {
-        e.preventDefault()
-        if(form.planet === '') {
-            return
-        } else {
-            onSubmit()
-        }
+  const formSubmit = (e) => {
+    e.preventDefault();
+    if (form.planet === "") {
+      return;
+    } else {
+      onSubmit();
     }
-    
-    const onSubmit = () => {
-        createTrip()
-        resetForm()
-        console.log("dados a ser eviado", form)
-    }
+  };
 
-    const createTrip = () => {
-        axios.post(URL_TRIPS, form, headers)
-        .then((res) => {
-            alert("Viagem criada com sucesso! Agora é só aguardar a tripulação!")
-            console.log("deu certo", res)
-        })
-        .catch((err) => {
-            console.log("deu ruim", err)
-        })
+  const onSubmit = () => {
+    createTrip();
+    resetForm();
+    console.log("dados a ser eviado", form);
+  };
 
-    }
+  const createTrip = () => {
+    axios
+      .post(URL_TRIPS, form, headers)
+      .then((res) => {
+        alert("Viagem criada com sucesso! Agora é só aguardar a tripulação!");
+        console.log("deu certo", res);
+      })
+      .catch((err) => {
+        console.log("deu ruim", err);
+      });
+  };
 
-    const dateToday = new Date().toISOString().slice(0,10)
-    
-    return (<>
-    <h1>Página de criar Viagens</h1>
-    <form onSubmit={formSubmit}>
-      <input required name="name" value={form.name} onChange={onChange} pattern="(.*[a-z]){5}" placeholder="Nome da viagem" title="Deve ter pelo menos 5 letras."/>  
-      <input required name="description" value={form.description} onChange={onChange} pattern="^.{30,}$" placeholder="Descrição da viagem" title="Deve ter pelo menos 30 caracteres."/>  
-      <select required name="planet" value={form.planet} onChange={onChange}>
-        <option value="" disabled>Escolha o planeta</option>
-        <option value="Mercúrio">Mercúrio</option>
-        <option value="Vênus">Vênus</option>
-        <option value="Terra">Terra</option>
-        <option value="Marte">Marte</option>
-        <option value="Jupiter">Jupter</option>
-        <option value="Saturno">Saturno</option>
-        <option value="Urano">Urano</option>
-        <option value="Netuno">Netuno</option>
-        <option value="Plutão">Plutão</option>
-      </select>  
-      <input required name="date" value={form.date} onChange={onChange} type="date" min={dateToday} placeholder="Data da viagem"/>  
-      <Input required name="durationInDays" value={form.durationInDays} type="number" min="50" onChange={onChange} placeholder="Duração da viagem em dias"/>
-      <button>Criar Viagem</button>
-    </form>
-    </>)
-}
+  const dateToday = new Date().toISOString().slice(0, 10);
 
-export default CreateTripPage
+  return (
+    <Main>
+      <HeaderCreateTrip />
+      <MainContainer>
+        <FormArea onSubmit={formSubmit}>
+          <input
+            required
+            name="name"
+            value={form.name}
+            onChange={onChange}
+            pattern="(.*[a-z]){5}"
+            placeholder="Nome da viagem"
+            title="Deve ter pelo menos 5 letras."
+          />
+          <input
+            required
+            name="description"
+            value={form.description}
+            onChange={onChange}
+            pattern="^.{30,}$"
+            placeholder="Descrição da viagem"
+            title="Deve ter pelo menos 30 caracteres."
+          />
+          <select
+            required
+            name="planet"
+            value={form.planet}
+            onChange={onChange}
+          >
+            <option value="" disabled>
+              Escolha o planeta
+            </option>
+            <option value="Mercúrio">Mercúrio</option>
+            <option value="Vênus">Vênus</option>
+            <option value="Terra">Terra</option>
+            <option value="Marte">Marte</option>
+            <option value="Jupiter">Jupter</option>
+            <option value="Saturno">Saturno</option>
+            <option value="Urano">Urano</option>
+            <option value="Netuno">Netuno</option>
+            <option value="Plutão">Plutão</option>
+          </select>
+          <input
+            required
+            name="date"
+            value={form.date}
+            onChange={onChange}
+            type="date"
+            min={dateToday}
+            placeholder="Data da viagem"
+          />
+          <Input
+            required
+            name="durationInDays"
+            value={form.durationInDays}
+            type="number"
+            min="50"
+            onChange={onChange}
+            placeholder="Duração da viagem em dias"
+          />
+          <button>Criar Viagem</button>
+        </FormArea>
+      </MainContainer>
+    </Main>
+  );
+};
 
-const Input = styled.input`
-::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-`
+export default CreateTripPage;

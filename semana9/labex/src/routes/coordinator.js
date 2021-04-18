@@ -22,6 +22,10 @@ export const goToCreteTripPage = (history) => {
     history.push("/admin/trips/create")
 }
 
+export const goToHomePage = (history) => {
+    history.push("/")
+}
+
 export const goToTripDetailsPage = (history, id) => {
     history.push(`/admin/trips/${id}`)
 }

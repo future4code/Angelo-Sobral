@@ -22,7 +22,7 @@ const LoginPage = () => {
       })
       .catch((err) => {
         console.log(err);
-        alert("Este e-mail não tem autorização para acessar est área! Entre em contato com o desenvolvedor.")
+        alert("Este e-mail não tem autorização para acessar esta área! Entre em contato com o desenvolvedor.")
         resetForm();
       });
   };

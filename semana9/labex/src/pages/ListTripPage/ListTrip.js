@@ -1,40 +1,34 @@
 import React from "react";
-import styled from "styled-components"
 import { goToApplyFormPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import { useRequestData } from "../../hooks/useRequestData";
+import { DetailsCard, Main, MainContainer, MainTripCard } from "./style";
 
 const ListTripPage = () => {
     const history = useHistory()
     const data = useRequestData('/trips', [])
 
     return (
-    <>
-    <h1>Página de  Listas de Viagens</h1>
-    <button onClick={()=> goToApplyFormPage(history)}>Candidata-se</button>
+    <Main>
+        <MainContainer>
+    <h1>Relação de Viagens</h1>
+    
     <MainTripCard>
+    
         {data.trips && data.trips.map((trip) => {
             return (<DetailsCard key={trip.id}>
-                <p>Viagem: {trip.name}</p>
-                <p>Planeta: {trip.planet}</p>
-                <p>Descrição: {trip.description}</p>
-                <p>Data da partida: {trip.date}</p>
-                <p>Duração: {trip.durationInDays} dias</p>
+                <p><strong>Viagem:</strong> {trip.name}</p>
+                <p><strong>Planeta:</strong> {trip.planet}</p>
+                <p><strong>Descrição:</strong> {trip.description}</p>
+                <p><strong>Data da partida:</strong> {trip.date}</p>
+                <p><strong>Duração:</strong> {trip.durationInDays} dias</p>
+                <button onClick={()=> goToApplyFormPage(history)}>Candidatar-se</button>
             </DetailsCard>)
         })}
+        
     </MainTripCard>
-    </>)
+    </MainContainer>
+    </Main>)
 }
 
 export default ListTripPage
-
-const MainTripCard = styled.div`
-display: flex;
-flex-wrap: wrap;
-`
-
-const DetailsCard = styled.div`
-background-color: blue;
-margin: 10px;
-flex: 1;
-`

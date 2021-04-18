@@ -3,24 +3,23 @@ import { useHistory } from "react-router";
 import styled from "styled-components"
 import { goToCreteTripPage, goToHomePage } from "../routes/coordinator";
 
-const HeaderAdmin = (props) => {
+const HeaderCreateTrip = (props) => {
   const history = useHistory()
   const logout = props.logout
 
   return (
     <Header>
       <Logo onClick={()=> goToHomePage(history)}><h2>LabeX</h2></Logo>
-      <h1>{props.h1}</h1>
+      <h1>Painel de Itinerário</h1>
       <div>
       <button onClick={history.goBack}>Voltar</button>
-      <button onClick={() => goToCreteTripPage(history)}>Criar Viagem</button>
       <button onClick={logout}>Logout</button>
       </div>
     </Header>
   );
 };
 
-export default HeaderAdmin;
+export default HeaderCreateTrip;
 
 const Header = styled.header`
 width: 100%;

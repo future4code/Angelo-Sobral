@@ -26,7 +26,8 @@ const CardAdminDetails = (props) => {
 
   return (
     <CardContainer>
-      <h2>Viagens Programadas:</h2>
+      <h3>Viagens Programadas:</h3>
+      <OverflowArea>
       {data.trips &&
         data.trips.map((trip) => {
           return (
@@ -44,6 +45,7 @@ const CardAdminDetails = (props) => {
             </CardDetails>
           );
         })}
+        </OverflowArea>
     </CardContainer>
   );
 };
@@ -57,22 +59,44 @@ box-shadow: 0px 0px 10px rgba(0,0,0, .8);
 backdrop-filter: blur(4px);
 background: hsla(0, 0%, 70%, 0.7);
 border-radius: 5px;
+color: #2f0444;
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
 align-items: center;
 flex-direction: column;
-overflow-y: auto;
+`
+const OverflowArea = styled.div`
+  width: 90%;
+  height: 320px;
+  overflow-y: auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0,0,0, .3);
+  padding-top: 10px;
 
-h2 {
-  position: absolute;
-  top: 10px;
+&::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+&::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+&::-webkit-scrollbar-thumb {
+  background-color: #2f0444;
+  border-radius: 50px;
+}
+
+&::-webkit-scrollbar-track{
+  margin: 5px;
 }
 `
 
-
 const CardDetails = styled.div`
-width: 90%;
-height: 50px;
+width: 95%;
+min-height: 50px;
 background-color: #f2f2f2;
 margin-bottom: 10px;
 padding: 0 10px;

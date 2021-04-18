@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import BaseBg from "../../assets/images/bg-base.png";
+import BaseBg from "../../assets/images/bg1.jpg";
 
 const translate = keyframes`
 0% {
@@ -107,7 +107,7 @@ export const MoonIMG = styled.img`
   position: absolute;
   left: 30px;
   animation: ${translate} 30s linear infinite;
-  z-index: -1;
+  z-index: 100;
 `;
 
 export const TopIMG = styled.img`

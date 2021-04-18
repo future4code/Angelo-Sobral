@@ -1,47 +1,43 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { headers, URL_TRIPS } from "../utils/apiUtils";
-import axios from "axios"
+import axios from "axios";
+import styled from "styled-components";
 
 const CardTripDetail = (props) => {
+  const trip = props.trip
 
-    const history = useHistory()
-
-    const trip = props.trip
-
-    const decideApproved = (tripId, candidateId, choice) => {
-        const body = {
-          approve: choice,
-        };
-        axios.put(
-          `${URL_TRIPS}/${tripId}/candidates/${candidateId}/decide`,
-          body,
-          headers
-        );
-      };
+  const decideApproved = (tripId, candidateId, choice) => {
+    const body = {
+      approve: choice,
+    };
+    axios.put(
+      `${URL_TRIPS}/${tripId}/candidates/${candidateId}/decide`,
+      body,
+      headers
+    );
+  };
 
   return (
-    <div>
-      <h1>Página de detalhes da viagem e candidaturas</h1>
-      <button onClick={history.goBack}>Voltar</button>
-      <h2>{trip.name}</h2>
-      <p>Viagem: {trip.name}</p>
-      <p>Planeta: {trip.planet}</p>
-      <p>Descrição: {trip.description}</p>
-      <p>Data da partida: {trip.date}</p>
-      <p>Duração: {trip.durationInDays} dias</p>
-      <hr />
+    <MainCard>
+      <CardTrip>
+        <h1>{trip.name}</h1>
+        <p>Planeta: {trip.planet}</p>
+        <p>Descrição: {trip.description}</p>
+        <p>Data da partida: {trip.date}</p>
+        <p>Duração: {trip.durationInDays} dias</p>
+      </CardTrip>
+
       {trip.candidates && trip.candidates.length ? (
-        <>
-          <h2>{"Candidatos(as) aguardando aprovação"}</h2>
+        <CardPending>
+          <h2>{"Candidatos aguardando aprovação"}</h2>
           {trip.candidates.map((data) => {
             return (
               <>
-                <p>{data.name}</p>
-                <p>{data.age}</p>
-                <p>{data.applicationText}</p>
-                <p>{data.profession}</p>
-                <p>{data.country}</p>
+                <p>Nome: {data.name}</p>
+                <p>Idade: {data.age}</p>
+                <p>Texto da Candidatura: {data.applicationText}</p>
+                <p>Profissão: {data.profession}</p>
+                <p>País: {data.country}</p>
                 <button onClick={() => decideApproved(trip.id, data.id, true)}>
                   Aprovar
                 </button>
@@ -49,37 +45,145 @@ const CardTripDetail = (props) => {
               </>
             );
           })}
-        </>
+        </CardPending>
       ) : (
-        <>
-          <h2>{"Candidatos(as) aguardando aprovação"}</h2>
+        <CardPending>
+          <h2>{"Candidatos aguardando aprovação"}</h2>
           <p>Nenhuma candidatura para esta viagem</p>
-        </>
+        </CardPending>
       )}
-      <hr />
+
       {trip.approved && trip.approved.length > 0 ? (
-        <p>
-          <h2>{"Candidatos(as) aprovados"}</h2>
-          {trip.approved.map((data) => {
-            return (
-              <>
-                <p>{data.name}</p>
-                <p>{data.age}</p>
-                <p>{data.applicationText}</p>
-                <p>{data.profession}</p>
-                <p>{data.country}</p>
-              </>
-            );
-          })}
-        </p>
+        <CardApproved>
+          <h2>{"Candidatos aprovados"}</h2>
+          <ul>
+            {trip.approved.map((data) => {
+              return <li>{data.name}</li>;
+            })}
+          </ul>
+        </CardApproved>
       ) : (
-        <p>
-          <h2>{"Candidatos(as) aprovados"}</h2>
-          Nenhuma aprovação para esta viagem!
-        </p>
+        <CardApproved>
+          <h2>{"Candidatos aprovados"}</h2>
+          Nenhuma candidatura aprovada até o momento.
+        </CardApproved>
       )}
-    </div>
+    </MainCard>
   );
 };
 
 export default CardTripDetail;
+
+const MainCard = styled.div`
+  width: 60%;
+  min-width: 360px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  backdrop-filter: blur(3px);
+  background: hsla(0, 0%, 100%, 0.438);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.718);
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+&::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+&::-webkit-scrollbar-thumb {
+  background-color: #2f0444;
+  border-radius: 50px;
+}
+
+&::-webkit-scrollbar-track{
+  margin: 15px;
+}
+`;
+
+const CardTrip = styled.div`
+  width: 80%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 10px;
+
+  h2 {
+    font-size: 18px;
+  }
+`;
+
+const CardPending = styled.div`
+  width: 60%;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  backdrop-filter: blur(3px);
+  background: hsla(0, 0%, 100%, 0.138);
+  box-shadow: 0px 0px 5px rgba(0,0,0, .8 );
+  padding: 0 5px;
+  border: 1px solid #f2f2f2;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: green;
+    color: #f2f2f2;
+    margin-bottom: 10px;
+    
+    :last-child{
+      margin-left: 5px;
+      background-color: red;
+    }
+
+    :hover {
+      opacity: .8;
+      box-shadow: 0 4px 8px 0 rgb(0 9 2 / 52%);
+      transform: translateY(-1px);
+    }
+
+    :active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+  }
+
+`;
+
+const CardApproved = styled.div`
+  width: 60%;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  backdrop-filter: blur(3px);
+  background: hsla(0, 0%, 100%, 0.138);
+  box-shadow: 0px 0px 5px rgba(0,0,0, .8 );
+  font-weight: 500;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  li {
+    list-style-position: inside;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+`;

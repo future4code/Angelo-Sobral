@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <Main>
       <MoonIMG src={MoonBg} alt="moon" />
-      <TopIMG src={TopBg} alt="space" />
+      {/* <TopIMG src={TopBg} alt="space" /> */}
       <MainCard>
         <>
           <h1>Sejam bem vindos a LabeX!</h1>

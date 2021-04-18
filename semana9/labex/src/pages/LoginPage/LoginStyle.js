@@ -54,7 +54,6 @@ export const CardLogin = styled.div`
 
   div {
     position: relative;
-    /* background-color: #f4f4f4; */
     border-radius: 5px;
     height: 50px;
     width: 90%;
