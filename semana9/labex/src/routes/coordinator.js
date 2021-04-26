@@ -6,7 +6,11 @@ export const goToAdminHomePage = (history) => {
     history.push("/admin/trips/list")
 }
 
-export const goToLoginPage = (history) => {
+export const goToLoginPage = (history, token) => {
+    token 
+    ? 
+    history.push("/admin/trips/list")
+    :
     history.push("/login")
 }
 
@@ -18,7 +22,7 @@ export const goToCreteTripPage = (history) => {
     history.push("/admin/trips/create")
 }
 
-export const goToTripDetailsPage = (history) => {
-    history.push("/admin/trips/:id")
+export const goToTripDetailsPage = (history, id) => {
+    history.push(`/admin/trips/${id}`)
 }
 

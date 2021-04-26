@@ -8,6 +8,7 @@ import {goToListTripPage, goToLoginPage } from "../routes/coordinator";
 
 const HomePage = () => {
     const history = useHistory()
+    const token = window.localStorage.getItem('tokenLabeX')
 
     return(
     <Main>
@@ -21,7 +22,7 @@ const HomePage = () => {
             </>
             <DivButtons>
             <button onClick={()=> {goToListTripPage(history)}}>Nossas Viagens</button>
-            <button onClick={()=> {goToLoginPage(history)}}>Acesso do Admin</button>
+            <button onClick={()=> {goToLoginPage(history, token)}}>Acesso do Admin</button>
             </DivButtons>
         </MainCard>
     </Main>

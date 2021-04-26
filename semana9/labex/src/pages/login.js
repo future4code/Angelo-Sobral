@@ -3,7 +3,8 @@ import styled from "styled-components"
 import BaseBg from "../assets/images/login.jpg"
 import { useHistory } from "react-router-dom";
 import axios from "axios"
-import { URL_LOGIN } from "../api/apiUtils";
+import { URL_LOGIN } from "../utils/apiUtils";
+import { goToAdminHomePage } from "../routes/coordinator";
 
 const LoginPage = () => {
     const history = useHistory()
@@ -24,7 +25,7 @@ const LoginPage = () => {
         axios.post(URL_LOGIN, body)
         .then((res) => {
             window.localStorage.setItem("tokenLabeX", res.data.token)
-            history.push('/admin/trips/list')
+            goToAdminHomePage(history)
         })
         .catch((err) => {
             console.log(err)
@@ -37,8 +38,8 @@ const LoginPage = () => {
     <MainContainer>
         <CardLogin>
             <h1>LabeX - Login</h1>
-            <input name="email" value={input.email} onChange={onChange} placeholder="E-mail"/>
-            <input name="password" value={input.password} onChange={onChange} placeholder="Senha"/>
+            <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$" name="email" type="email" value={input.email} onChange={onChange} placeholder="E-mail"/>
+            <input required name="password" type="password" value={input.password} onChange={onChange} placeholder="Senha"/>
             <button onClick={login}>Entrar</button>
         </CardLogin>
     </MainContainer>
