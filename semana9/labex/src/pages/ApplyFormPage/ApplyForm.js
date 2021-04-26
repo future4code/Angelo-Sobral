@@ -1,9 +1,11 @@
 import axios from "axios";
 import React from "react";
-import { URL_TRIPS } from "../utils/apiUtils";
-import {countries} from "../utils/countries"
-import { useForm } from "../hooks/useForm";
-import { useRequestData } from "../hooks/useRequestData";
+import { URL_TRIPS } from "../../utils/apiUtils";
+import {countries} from "../../utils/countries"
+import { useForm } from "../../hooks/useForm";
+import { useRequestData } from "../../hooks/useRequestData";
+import { FormArea, Main, MainContainer } from "./style";
+
 
 const ApplyFormsPage = () => {
     const data = useRequestData('/trips', [])
@@ -34,28 +36,30 @@ const ApplyFormsPage = () => {
         })
     }
 
-    return (<>
-    <h1>Página de inscrição</h1>
-    <form onSubmit={onSubmit}>
-        <select name="tripId" value={form.tripId} onChange={onChange} >
+    return (<Main>
+        <MainContainer>
+    <h1>Página de Candidatura</h1>
+    <FormArea onSubmit={onSubmit}>
+        <select required name="tripId" value={form.tripId} onChange={onChange} >
             <option value="" disabled>Escolha uma viagem</option>
             {data.trips && data.trips.map((trip) => {
             return <option key={trip.id} value={trip.id}>{trip.name}</option>
          })}
         </select>
-        <input value={form.name} onChange={onChange} name="name" placeholder="Nome"/>
-        <input value={form.age} onChange={onChange} name="age" placeholder="Idade"/>
-        <input value={form.applicationText} onChange={onChange} name="applicationText" placeholder="Por que devemos escolher você"/>
-        <input value={form.profession} onChange={onChange} name="profession" placeholder="Profissão"/>
-        <select value={form.country} onChange={onChange} name="country">
+        <input required value={form.name} onChange={onChange} name="name" pattern="^.{3,}$" placeholder="Nome" title="O nome deve conter pelo menos 3 letras"/>
+        <input required value={form.age} onChange={onChange} name="age" type="number" min="18" placeholder="Idade"/>
+        <input required value={form.applicationText} onChange={onChange} name="applicationText" pattern="^.{30,}$" placeholder="Por que devemos escolher você" title="Deve conter pelo menos 30 letras"/>
+        <input required value={form.profession} onChange={onChange} name="profession" pattern="^.{10,}$" placeholder="Profissão" title="Deve conter pelo menos 10 letras"/>
+        <select required value={form.country} onChange={onChange} name="country">
             <option value="" disabled>Escolha um país</option>
             {countries.map((country) => {
                 return <option key={country} value={country}>{country}</option>
             })}
         </select>
-        <button>Candidatar-se</button>
-    </form>
-    </>)
+        <button>Enviar candidatura</button>
+    </FormArea>
+    </MainContainer>
+    </Main>)
 }
 
 export default ApplyFormsPage
