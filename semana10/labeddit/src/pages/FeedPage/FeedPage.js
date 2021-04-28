@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm } from "../../hooks/useForm";
-import { goToPost } from "../../routes/cordinator";
+import FormPost from "../../components/FormPost";
+import Pagination from "../../components/Pagination";
+import Posts from "../../components/Posts";
 import { baseURL } from "../../utils/urls";
 
 const FeedPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [form, onChange] = useForm({text: '', title:''})
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] =useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(10)
 
   const token = window.localStorage.getItem("token");
 
@@ -15,45 +18,44 @@ const FeedPage = () => {
   };
 
   useEffect(() => {
-    token && axios.get(`${baseURL}/posts`, headers)
-    .then(res => setPosts(res.data.posts))
-    .catch(err => console.log(err));
+    token && getPosts()
   }, [token]);
 
-  const createPost = async (e) => {
-    e.preventDefault()
-    try {
-      await axios.post(`${baseURL}/posts`, form, headers)
-      goToPost()
-      alert('Post criado com sucesso!')
-    }
-    catch (err) {
-        alert('Algo inesperado aconteceu, por favor, tente novamente mais tarde!')
-        console.log(err)
-    }
+  const getPosts = () => {
+    setLoading(true)
+    axios.get(`${baseURL}/posts`, headers)
+    .then(res => {
+      setPosts(res.data.posts)
+      setLoading(false)
+    })
+    .catch(err => console.log(err));
   }
+
+  const indexLastPost =  currentPage * postsPerPage
+  const indexFirstPost = indexLastPost - postsPerPage
+  const currentPosts = posts.sort((a,b) => b.createdAt - a.createdAt).slice(indexFirstPost, indexLastPost)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
     <div>
       {token ? (
-        posts.length > 0 ? (
           <>
             <h1>Feed Page</h1>
 
-            <form onSubmit={createPost}>
-              <input name='title' onChange={onChange} value={form.title} placeholder="Título do post" />
-              <textarea name='text' onChange={onChange} value={form.text} placeholder="Escreva seu post" />
-              <button>Post</button>
-            </form>
+            <FormPost getPosts={getPosts}/>
 
-            <p>Título: {posts.length && posts[0].title}</p>
-            <p>Texto: {posts.length && posts[0].text}</p>
+            <Posts posts={currentPosts} loading={loading} />
+            
+            <Pagination
+            posts={postsPerPage}
+            totalPosts={posts.length}
+            paginate={paginate}
+            />
+            
           </>
         ) : (
-          <p>Carregando...</p>
-        )
-      ) : (
-        <p>
+          <p>
           Você precisa está logado para acessar esta página. Faça seu login
           clicando <a href="/">aqui.</a>
         </p>
