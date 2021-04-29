@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { goToPost } from "../routes/cordinator";
+import { format, parseISO } from "date-fns"
+import { ptBR } from "date-fns/locale";
 
 const Posts = ({ posts, loading }) => {
   const history = useHistory();
@@ -18,7 +20,9 @@ const Posts = ({ posts, loading }) => {
             <p>Usuário: {post.username}</p>
             <p>Título: {post.title}</p>
             <p>Texto: {post.text}</p>
-            <p>Texto: {new Date(post.createdAt).toISOString().slice(0,10)}</p>
+            Publicado: {post.createdAt && format(parseISO(new Date(post && post.createdAt).toISOString().slice(0,10)), 'd MMM yyyy', {
+            locale: ptBR,
+            })}
           </CardPost>
         );
       })}
