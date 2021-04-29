@@ -19,7 +19,7 @@ const FeedPage = () => {
 
   useEffect(() => {
     token && getPosts()
-  }, [token]);
+  }, []);
 
   const getPosts = () => {
     setLoading(true)
