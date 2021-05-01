@@ -1,11 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import FormPost from "../../components/FormPost";
+import Header from "../../components/Header";
+import MostCommented from "../../components/MostCommented";
+import MostVoted from "../../components/MostVoted";
 import Pagination from "../../components/Pagination";
 import Posts from "../../components/Posts";
+import Warning from "../../components/Warning";
 import { baseURL } from "../../utils/urls";
+import { ContainerArea, Main } from "./style";
 
 const FeedPage = () => {
+  
   const [posts, setPosts] = useState([])
   const [loading, setLoading] =useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -37,30 +43,32 @@ const FeedPage = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-  return (
-    <div>
-      {token ? (
-          <>
-            <h1>Feed Page</h1>
-
+  return (<>
+    <Header />
+    <Main>
+      {token ? (<>
+          <ContainerArea>
             <FormPost getPosts={getPosts}/>
 
-            <Posts posts={currentPosts} loading={loading} />
+            <Posts posts={currentPosts} getPosts={getPosts} loading={loading} />
             
             <Pagination
             posts={postsPerPage}
             totalPosts={posts.length}
             paginate={paginate}
             />
-            
+          </ContainerArea>
+
+          <ContainerArea>
+            <MostCommented posts={posts} loading={loading} />
+            <MostVoted posts={posts} loading={loading} />
+          </ContainerArea>
           </>
         ) : (
-          <p>
-          Você precisa está logado para acessar esta página. Faça seu login
-          clicando <a href="/">aqui.</a>
-        </p>
+          <Warning />
       )}
-    </div>
+    </Main>
+    </>
   );
 };
 

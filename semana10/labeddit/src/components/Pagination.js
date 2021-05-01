@@ -9,17 +9,22 @@ const Pagination = ({ posts, totalPosts, paginate }) => {
   }
 
   return (
-    <nav>
+    <Nav>
       <PageUl className="pagination">
         {pageNumbers.map(number => {
            return <li key={number} onClick={() => paginate(number)}>{number}</li>
         })}
       </PageUl>
-    </nav>
+    </Nav>
   );
 };
 
 export default Pagination;
+
+const Nav = styled.nav`
+display: flex;
+justify-content: center;
+`
 
 const PageUl= styled.ul`
 list-style: none;

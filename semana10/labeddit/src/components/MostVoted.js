@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { goToPost } from "../routes/cordinator";
 import { format, parseISO } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import axios from "axios";
-import { baseURL } from "../utils/urls";
 import UpVote from "../assets/images/up-arrow.svg";
 import DownVote from "../assets/images/down-arrow.svg";
-import Chat from "../assets/images/chat.svg";
-import Loading from "./Loading";
+import axios from "axios";
+import { baseURL } from "../utils/urls";
 
-const Posts = ({ posts, loading, getPosts }) => {
+const MostVoted = ({ posts, loading }) => {
   const history = useHistory();
 
   if (loading) {
-    return <Loading />;
+    return <h2>Carregando...</h2>;
   }
 
   const headers = {
@@ -28,7 +26,7 @@ const Posts = ({ posts, loading, getPosts }) => {
     };
     try {
       await axios.put(`${baseURL}/posts/${id}/vote`, body, headers);
-      getPosts()
+      
     } catch (err) {
       console.log(err);
     }
@@ -46,12 +44,14 @@ const Posts = ({ posts, loading, getPosts }) => {
     }
   };
 
-    return (
+  return (
     <>
-      {posts.map((post) => {
+    <Title>Mais votado no momento</Title>
+      {posts.sort((a,b) => b.votesCount - a.votesCount).slice(0,5).map((post) => {
         return (
           <PostArea key={post.id}>
-            <CardPost key={post.id} onClick={() => goToPost(history, post.id)}>
+            
+            <CardPost key={post.id}>
               <p>
                 Postado por <strong>{post.username}</strong> em{" "}
                 {post.createdAt &&
@@ -67,28 +67,13 @@ const Posts = ({ posts, loading, getPosts }) => {
                     }
                   )}
               </p>
-              <h3>{post.title}</h3>
-              <p>{post.text}</p>
-            </CardPost>
-            <VoteButtons>
+              <h5 onClick={() => goToPost(history, post.id)}>{post.title}</h5>
               <div>
-                <button onClick={() => upVote(post.id)}>
-                  <img src={UpVote} />
-                </button>
-
-                <div>{post.votesCount}</div>
-
-                <button onClick={() => downVote(post.id)}>
-                  <img src={DownVote} />
-                </button>
+                <button onClick={() => upVote(post.id)}> <ImgComment src={UpVote} alt='Up arrow'/></button>{" "}
+                {post.votesCount}
+                <button onClick={() => downVote(post.id)}> <ImgComment src={DownVote} alt='Down arrow'/> </button>
               </div>
-              <div onClick={() => goToPost(history, post.id)}>
-                {post.commentsCount} <ImgComment src={Chat} />{" "}
-                {post.comments && post.comments.length > 1
-                  ? "Comentários"
-                  : "Comentário"}
-              </div>
-            </VoteButtons>
+            </CardPost>
           </PostArea>
         );
       })}
@@ -96,70 +81,54 @@ const Posts = ({ posts, loading, getPosts }) => {
   );
 };
 
-export default Posts;
+export default MostVoted;
+
+const Title = styled.h3`
+margin-top: 1rem;
+`
 
 const PostArea = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 400px;
 `;
 
 const CardPost = styled.div`
   margin: 0 auto;
-  width: 500px;
-  min-height: 6rem;
+  width: 400px;
   overflow-y: auto;
-  cursor: pointer;
+  
   background: #fff;
   padding: 0.5rem;
+  font-size: .775rem;
+  margin-bottom: 0.5rem; 
 
-  p,
-  h3 {
-    margin-bottom: 0.5rem;
-  }
-`;
-
-const ImgComment = styled.img`
-  width: 1rem;
-  margin: 0 0.5rem;
-`;
-
-const VoteButtons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-
-  > div {
+  div {
+    margin-top: .3rem;
     display: flex;
     align-items: center;
+  }
 
-    :last-child {
-      cursor: pointer;
-    }
+  p,h5 {
+      margin-bottom: 0.5rem; 
+  }
 
-    > div {
-      margin: 0 0.5rem;
-      
-    }
+  h5 {
+    cursor: pointer;
   }
 
   button {
     border: 0;
-    height: 28px;
-    width: 28px;
     background-color: transparent;
     cursor: pointer;
 
     :active {
       transform: scale(1.4)
     }
-    
   }
-  img {
-    width: 18px;
-    height: 18px;
-  }
+`;
+
+const ImgComment = styled.img`
+  width: 1rem;
+  margin: 0 0.5rem;
 `;
