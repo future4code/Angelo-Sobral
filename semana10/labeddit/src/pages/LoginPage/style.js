@@ -76,6 +76,8 @@ form {
 }
 
 a {
+    color: pink;
+    
     :visited {
         color: pink;
     }
