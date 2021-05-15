@@ -30,9 +30,6 @@ h1{
     justify-content:center; 
     z-index: 100;
 }
-
-
-
 `
 
 export const MainTripCard = styled.div`
@@ -40,13 +37,18 @@ border-radius: 10px;
 display: flex;
 flex-wrap: wrap;
 backdrop-filter: blur(3px);
-  background: hsla(0, 0%, 100%, 0.438);
-  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.718);
+background: hsla(0, 0%, 100%, 0.438);
+ box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.718);
 max-height: 80%;
 min-width: 350px;
 margin-top: 100px;
 padding: 5px;
 overflow-y: scroll;
+
+@media(max-width: 450px) {
+    display: grid;
+    grid-template-columns: 350px;
+    }
 
 &::-webkit-scrollbar {
   width: 6px;
@@ -69,13 +71,14 @@ overflow-y: scroll;
 export const DetailsCard = styled.div`
 border: 1px solid  #f2f2f2;
 backdrop-filter: blur(3px);
-  background: hsla(0, 0%, 100%, 0.138);
+background: hsla(0, 0%, 100%, 0.138);
 box-shadow: 0px 0px 10px rgba(0,0,0, .6);
 padding: 10px;
 border-radius: 5px;
 margin: 10px;
-flex: 1 360px;
+flex: 1 350px;
 position: relative;
+
 
 button{
     position: absolute;
@@ -108,8 +111,6 @@ button{
       box-shadow: none;
     }
   }
-
-  
 `
 export const Loading = styled.div`
 height:100%;

@@ -2,7 +2,7 @@ import React from "react";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { headers, URL_TRIPS } from "../../utils/apiUtils";
+import { URL_TRIPS } from "../../utils/apiUtils";
 import { FormArea, Input, Main, MainContainer } from "./style";
 import HeaderCreateTrip from "../../components/HeaderCreateTrip";
 
@@ -29,6 +29,11 @@ const CreateTripPage = () => {
     createTrip();
     resetForm();
   };
+
+  const headers = { 
+    headers: { auth: window.localStorage.getItem("tokenLabeX")
+    }
+  }
 
   //para criar uma nova viagem, deve ser adicionado um backround url manualmente na TripDetailsPage
   const createTrip = () => {
