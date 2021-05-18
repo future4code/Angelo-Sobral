@@ -59,7 +59,7 @@ function obterEstatisticas(numeros: number[]):object {
         soma += num
     }
 
-    const estatisticas:object = {
+    const estatisticas = {
         maior: numerosOrdenados[numeros.length - 1],
         menor: numerosOrdenados[0],
         media: soma / numeros.length
@@ -75,6 +75,14 @@ type Amostra = {
     numeros: number[];
     obterEstatisticas: (numeros: number[]) => object
 }
+
+const amostraDeIdades:Amostra = {
+    numeros: [21, 18, 65, 44, 15, 18],
+    obterEstatisticas
+}
+
+// console.log(obterEstatisticas(amostraDeIdades.numeros))
+
 
 //Exercicio 3
 type Posts = {
@@ -135,3 +143,34 @@ function calc(num1:number, num2:number) {
     `A multiplicação dos números é ${mult}`,`A divisão dos números é ${div}`,
     `O maior número é ${maior}`)
 }
+
+//Exercicio 6
+
+function idadeHistorica(ano:number, acOUdc?:string) {
+    if(ano >= 4000 && acOUdc?.toUpperCase() === 'AC') {
+        return 'Idade pré histórica'
+    } else if ( ano < 4000 && acOUdc?.toUpperCase() === 'AC' || ano < 476 && acOUdc?.toUpperCase() === 'DC') {
+        return 'Idade antiga'
+    } else if ( ano > 475 && acOUdc?.toUpperCase() === 'DC' || ano < 1453 && acOUdc?.toUpperCase() === 'DC') {
+        return 'Idade média'
+    } else if ( ano > 1452 && acOUdc?.toUpperCase() === 'DC' || ano < 1789 && acOUdc?.toUpperCase() === 'DC') {
+        return 'Idade moderna'
+    } else if ( ano > 1789 && acOUdc?.toUpperCase() === 'DC') {
+        return 'Idade Contemporânea'
+    } else if (acOUdc === undefined) {
+        if ( ano > 0 && ano < 476) {
+            return 'Idade antiga'
+        } else if (ano > 475 && ano < 1453) {
+            return 'Idade média'
+        } else if (ano > 1452 && ano < 1789) {
+            return 'Idade moderna'
+        } else if ( ano > 1789) {
+            return 'Idade Contemporânea'
+        }
+    } else {
+       return 'Erro'
+    }
+}
+
+const imprimeIdade = idadeHistorica(2021)
+console.log(imprimeIdade)
