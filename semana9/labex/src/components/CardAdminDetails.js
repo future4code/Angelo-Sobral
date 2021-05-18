@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router";
 import { goToTripDetailsPage } from "../routes/coordinator";
-import { headers, URL_TRIPS } from "../utils/apiUtils";
+import { URL_TRIPS } from "../utils/apiUtils";
 import styled from "styled-components"
 import deleteButton from "../assets/images/excluir.svg"
 import detailsButton from "../assets/images/web.svg"
@@ -11,6 +11,11 @@ const CardAdminDetails = (props) => {
   const history = useHistory();
 
   const data = props.data;
+
+  const headers = { 
+    headers: { auth: window.localStorage.getItem("tokenLabeX")
+    }
+  }
 
   const deleteTrip = (id) => {
     axios
@@ -64,6 +69,12 @@ display: flex;
 justify-content: space-evenly;
 align-items: center;
 flex-direction: column;
+
+@media(max-width: 450px) {
+    width: 100%;
+    margin-bottom: 32px;
+    }
+
 `
 const OverflowArea = styled.div`
   width: 90%;

@@ -40,11 +40,21 @@ justify-content: space-between;
 position: absolute;
 z-index: 100;
 
+@media(max-width: 450px) {
+    padding: 0 16px;
+    }
+
 h1{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%);
+
+    @media(max-width: 450px) {
+      width: 60%;
+      text-align: center;
+      font-size: 24px;
+    }
 }
 
 button{
@@ -67,6 +77,10 @@ button{
       transform: translateY(1px);
       box-shadow: none;
     }
+
+    @media(max-width: 450px) {
+      display: none;
+    }
 }
 
 `
@@ -77,4 +91,9 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 cursor: pointer;
+
+@media(max-width: 450px) {
+    display: none;
+    }
+
 `

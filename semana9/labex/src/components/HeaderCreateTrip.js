@@ -39,7 +39,13 @@ h1{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%);
+
+    @media(max-width: 450px) {
+      width: 68%;
+      text-align: center;
+      font-size: 24px;
+    }
 }
 
 button{

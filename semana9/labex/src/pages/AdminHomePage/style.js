@@ -12,9 +12,14 @@ margin: 0 auto;
 display: flex;
 justify-content: space-between;
 align-items: center;
-height: 100vh;
+min-height: 100vh;
 padding: 0 30px;
 overflow: hidden;
+
+@media(max-width: 450px) {
+    flex-direction: column;
+    }
+
 `
 
 export const CardInfo = styled.div`
@@ -28,6 +33,12 @@ font-size: 20px;
 border-radius: 5px;
 color: #2f0444;
 font-weight: 500;
+
+@media(max-width: 450px) {
+    width: 100%;
+    margin-top: 90px;
+    margin-bottom: 16px;
+    }
 
 span{
   font-weight: bold;
