@@ -120,3 +120,18 @@ function buscarPostsPorAutor(posts:Posts[], autorInformado:string) {
 //a) tsc index.ts
 //b) teria que acessar o direotorio e usar o tsc index.ts
 //c) sim. podemos usar o comando tsc seguidas vezes com o nome do arquivo a ser tranpilado, ou fazer através de scripts do pkg json
+
+//Desafios
+//Exercicio 5
+
+function calc(num1:number, num2:number) {
+    const soma = num1 + num2
+    const sub = num1 - num2
+    const mult = num1 * num2
+    const div = num1 / num2
+    const maior = Math.max(num1, num2)
+
+    console.log(`A soma dos números é ${soma}`, `A subtração dos números é ${sub}`,
+    `A multiplicação dos números é ${mult}`,`A divisão dos números é ${div}`,
+    `O maior número é ${maior}`)
+}
