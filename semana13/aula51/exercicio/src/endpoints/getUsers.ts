@@ -7,7 +7,7 @@ export default async function getUsers(
 ): Promise<void> {
    try {
 
-    const users = await connection('to_do_list_users')
+    const users = await connection('User')
     
     res.status(200).send(users)
 

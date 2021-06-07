@@ -10,9 +10,17 @@ export default async function signUp(
     try {
         const { email, password } = req.body
 
+        const [user] = await connection('User')
+        .where({ email })
+
+        if (user) {
+          res.statusCode = 409
+          throw new Error('Email já cadastrado')
+        }
+
         const id = createID()
 
-        const user =  await connection("User")
+        const newUser =  await connection("User")
         .insert({id, email, password})
 
         const token = createToken({
