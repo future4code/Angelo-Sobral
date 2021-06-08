@@ -1,0 +1,34 @@
+# @name signup
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "Mary Jane Park", 
+   "nickname": "MJ", 
+   "email": "maryjane@ospider.com" ,
+   "password": "ilovepeter",
+   "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "harry@oscorp.com" ,
+   "password": "ihatepeter"
+}
+
+###
+
+@id = {{signup.response.body.newUser.id}}
+
+PUT http://localhost:3003/user/edit/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMDYyMjgyLWFlZDktNDVmYS04MDNhLTA4Y2U5NTZiYWI3NiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYyMzE2MTA3MywiZXhwIjoxNjIzMjA0MjczfQ.0QDAAm3wJxNqcnQ-9igoeVsi42_bOrO9vWTBns_5uRc
+
+{
+   "name": "Mary Jane" 
+}
