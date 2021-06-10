@@ -10,3 +10,14 @@ Content-Type: application/json
     "number": 10, 
     "role": "NORMAL"
 }
+
+###
+
+POST http://localhost:3003/send/mail
+Content-Type: application/json
+
+{
+    "email": "g6e8k2i3m1o7e5d9@labenualunos.slack.com",
+    "subject": "Desafio",
+    "text": "Não entendi o enunciado do desafio, mas o importante é que consegui concluir e entender tudo."
+}
