@@ -1,0 +1,12 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Karine ODwyer", 
+    "nickname": "KrsODwyer", 
+    "email": "krssouza@hotmail.com", 
+    "password": "123456", 
+    "cep": "40450695", 
+    "number": 10, 
+    "role": "NORMAL"
+}
