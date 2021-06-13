@@ -3,6 +3,7 @@ import createRecipe from "./endpoints/createRecipe";
 import createUser from "./endpoints/createUser";
 import getProfileById from "./endpoints/getProfileById";
 import getRecipeById from "./endpoints/getRecipeById";
+import getRecipes from "./endpoints/getRecipes";
 import getUserProfile from "./endpoints/getUserProfile";
 import login from "./endpoints/login";
 
@@ -13,3 +14,4 @@ app.post("/cookenu/recipe", createRecipe)
 app.get("/cookenu/profile", getUserProfile)
 app.get("/cookenu/user/:id", getProfileById)
 app.get("/cookenu/recipe/:id", getRecipeById)
+app.get("/cookenu/feed", getRecipes)
