@@ -19,8 +19,8 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
       throw new Error("A senha deve conter pelo menos 6 caracteres.");
     }
 
-    const user = await connection("cookenu_users").where({email})
-
+    const [user] = await connection("cookenu_users").where({email})
+    
     if(user) {
       throw new Error("Email já cadastrado.")
     }
