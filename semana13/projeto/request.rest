@@ -1,0 +1,49 @@
+POST http://localhost:3003/cookenu/signup
+Content-Type: application/json
+
+{
+    "name": "Karine O'Dwyer",
+    "email": "karine@gmail.com",
+    "password": "123123"
+}
+
+###
+
+POST http://localhost:3003/cookenu/login
+Content-Type: application/json
+
+{
+    "email": "karine@gmail.com",
+    "password": "123123"
+}
+
+###
+
+GET http://localhost:3003/cookenu/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVlZmU5M2U4LTA3YjgtNDZhMy1hNWYzLThmZDgwNzBlNzI1YiIsImlhdCI6MTYyMzQ0OTkxNiwiZXhwIjoxNjI0MDU0NzE2fQ.UvPynLi6E8gTffBs3q_M_oKAKHum3afn0t-IPTjh8_Q
+
+###
+
+GET http://localhost:3003/cookenu/user/3161f48a-6b4a-47dc-ab30-10e92463e6ed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVlZmU5M2U4LTA3YjgtNDZhMy1hNWYzLThmZDgwNzBlNzI1YiIsImlhdCI6MTYyMzQ0OTkxNiwiZXhwIjoxNjI0MDU0NzE2fQ.UvPynLi6E8gTffBs3q_M_oKAKHum3afn0t-IPTjh8_Q
+
+###
+
+POST http://localhost:3003/cookenu/recipe
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVlZmU5M2U4LTA3YjgtNDZhMy1hNWYzLThmZDgwNzBlNzI1YiIsImlhdCI6MTYyMzQ0OTkxNiwiZXhwIjoxNjI0MDU0NzE2fQ.UvPynLi6E8gTffBs3q_M_oKAKHum3afn0t-IPTjh8_Q
+Content-Type: application/json
+
+{
+    "title": "Risoto de camarão",
+    "description": "Lave os camarões e deixe de molho no suco de limão e com sal a gosto por 15 minutos. Faça o arroz como de costume e reserve, com pouco tempero ou sal. Escorra o camarão, reserve 1 colher de sopa do suco de limão. Aqueça o óleo, coloque a cebola, o alho e refogue um pouco, em seguida coloque os camarões com um pouquinho do suco de limão. Misture bem e deixe refogar mais um pouco. Em seguida coloque os tomates e o pimentão, mexa bem até o tomate amolecer. Por último coloque o molho de tomate, mexa por mais 3 minutos e pronto. Misturar ao arroz morno em um bonito refratário e servir. Bom para um dia de verão acompanhado de uma cerveja gelada."
+}
+
+###
+
+GET http://localhost:3003/cookenu/recipe/f8c2199b-3c2f-425c-8d7e-043f854f1e93
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVlZmU5M2U4LTA3YjgtNDZhMy1hNWYzLThmZDgwNzBlNzI1YiIsImlhdCI6MTYyMzQ0OTkxNiwiZXhwIjoxNjI0MDU0NzE2fQ.UvPynLi6E8gTffBs3q_M_oKAKHum3afn0t-IPTjh8_Q
+
+###
+
+GET http://localhost:3003/cookenu/feed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVlZmU5M2U4LTA3YjgtNDZhMy1hNWYzLThmZDgwNzBlNzI1YiIsImlhdCI6MTYyMzQ0OTkxNiwiZXhwIjoxNjI0MDU0NzE2fQ.UvPynLi6E8gTffBs3q_M_oKAKHum3afn0t-IPTjh8_Q
