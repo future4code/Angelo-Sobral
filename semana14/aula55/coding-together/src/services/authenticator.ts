@@ -1,14 +1,9 @@
 import * as jwt from "jsonwebtoken"
-import { USER_ROLES } from "../data/insertUser"
+import { authenticationData } from "../model/user"
 
-export type AuthenticationData = {
-   id: string,
-   role: USER_ROLES
-}
-
-export function generateToken(
-   payload: AuthenticationData
-): string {
+export const generateToken = (
+   payload: authenticationData
+): string => {
    return jwt.sign(
       payload,
       process.env.JWT_KEY as string,
@@ -18,11 +13,11 @@ export function generateToken(
    )
 }
 
-export function getTokenData(
+export const getTokenData = (
    token: string
-): AuthenticationData {
+): authenticationData => {
    return jwt.verify(
       token,
       process.env.JWT_KEY as string
-   ) as AuthenticationData
+   ) as authenticationData
 }

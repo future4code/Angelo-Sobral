@@ -1,16 +1,8 @@
 {
-    "name": "to-do-list",
-    "version": "1.0.0",
-    "description": "## ESTRUTURA DE DADOS",
-    "main": "index.js",
     "scripts": {
         "start": "tsc && node --inspect ./build/index.js",
-        "dev": "ts-node-dev ./src/index.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "cors": "^2.8.5",
