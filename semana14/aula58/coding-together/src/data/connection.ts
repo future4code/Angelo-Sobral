@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export const connection = knex({
+export class BaseDatabase { 
+   protected connection = knex({
    client: 'mysql',
    connection: {
       host: process.env.DB_HOST,
@@ -14,3 +15,4 @@ export const connection = knex({
       multipleStatements: true
    }
 })
+}
