@@ -1,0 +1,29 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Teste O'Dwyer",
+    "email": "teste@gmail.com",
+    "password": "123123",
+    "role": "NORMAL"
+}
+
+###
+
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "floki@gmail.com",
+    "password": "123123"
+}
+
+###
+
+GET http://localhost:3003/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1ZWM4OTk5LTFjYTYtNDAzOC05MjY2LWYyNzNiMDkxNzRkYiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYyMzcwOTA4OCwiZXhwIjoxNjIzNzEwNTI4fQ.l4gnYc08dVZdTdgQufarnaBQZMPk8zud_OFzfEVim6o
+
+###
+
+DELETE http://localhost:3003/user/57e86373-792d-4392-93c7-469b36763fdb
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5ZTljMTU4LTgzODYtNGE0Ni1hYTdmLTI5ZDE5OTlhODY4OCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MjM3MTkwMDcsImV4cCI6MTYyMzcyMDQ0N30.riPhK90gC0Li-WvBMUSN-2ZQDLOhyYaX2x6NLKrM1wY
