@@ -30,3 +30,5 @@ const classeCachorro1: Dog = new Dog("rex", 20);
 
 console.log(cachorro1)
 console.log(classeCachorro1)
+
+

@@ -20,6 +20,22 @@ export type authenticationData = {
    role: USER_ROLES
 }
 
+export interface TaskManager {
+   taskAmount: number;
+   taskStatus: string;
+}
+
+class userShort {
+   constructor(
+      private id: string,
+      private name: string,
+      private nickname: string,
+      private email: string,
+      private password: string,
+      private role: USER_ROLES,
+   ) {}
+}
+
 export class User {
    //atributos da classe (acesso com this)
    private id: string;
