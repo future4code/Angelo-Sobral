@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { loginBusiness } from "../business/loginBusisness";
+import { loginBusiness } from "../business/user/loginBusisness";
 import { userLogin } from "../model/user";
 
 export const login = async (req: Request, res: Response) => {

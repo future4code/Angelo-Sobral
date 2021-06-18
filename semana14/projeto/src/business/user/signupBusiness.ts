@@ -1,9 +1,9 @@
-import { getUserByEmail } from "../data/getUserByEmail";
-import { insertUser } from "../data/insertUser";
-import { userData } from "../model/user";
-import { createToken } from "../services/authenticator";
-import { createHash } from "../services/hashManager";
-import { idGenerator } from "../services/idGenerator";
+import { getUserByEmail } from "../../data/getUserByEmail";
+import { insertUser } from "../../data/insertUser";
+import { userData } from "../../model/user";
+import { createToken } from "../../services/authenticator";
+import { createHash } from "../../services/hashManager";
+import { idGenerator } from "../../services/idGenerator";
 
 export const signupBusiness = async (userData: userData): Promise<string> => {
   if (!userData.name || !userData.email || !userData.password) {

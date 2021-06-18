@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { signupBusiness } from "../business/signupBusiness";
+import { signupBusiness } from "../business/user/signupBusiness";
 import { userData } from "../model/user";
 
 export const signup = async (req: Request, res: Response) => {

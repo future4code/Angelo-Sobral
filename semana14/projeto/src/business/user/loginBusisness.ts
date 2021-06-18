@@ -1,7 +1,7 @@
-import { getUserByEmail } from "../data/getUserByEmail";
-import { userLogin } from "../model/user";
-import { createToken } from "../services/authenticator";
-import { compareHash } from "../services/hashManager";
+import { getUserByEmail } from "../../data/getUserByEmail";
+import { userLogin } from "../../model/user";
+import { createToken } from "../../services/authenticator";
+import { compareHash } from "../../services/hashManager";
 
 export const loginBusiness = async (userLogin: userLogin) => {
   if (!userLogin.email || !userLogin.password) {
