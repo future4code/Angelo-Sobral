@@ -109,4 +109,38 @@ describe("UserBusiness", () => {
             }
         })
     })
+
+    describe("getUserById", () =>{
+        test("Error if user not exist", async () => {
+            expect.assertions(2)
+
+            try {
+                await userBusinessMock.getUserById("888")                
+            } catch (error) {
+                expect(error.statusCode).toBe(404)
+                expect(error.message).toBe("Not found")
+            }
+        })
+
+        test("Return user if everything is rigth", async () => {
+            expect.assertions(2)
+
+            try {
+                const getUserById = jest.fn(
+                    (id:string) => userBusinessMock.getUserById(id)
+                )
+                const result = await getUserById("123")  
+                
+                expect(getUserById).toHaveBeenCalledWith("123")
+                expect(result).toEqual({
+                    id: result.id ,
+                    name: result.name,
+                    email: result.email,
+                    role: result.role
+                })
+            } catch (error) {
+                console.log(error.message)
+            }
+        })
+    })
 })
