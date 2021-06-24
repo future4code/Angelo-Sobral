@@ -1,5 +1,5 @@
 import { CustomError } from "../errors/CustomError";
-import { User, stringToUserRole } from "../model/User";
+import { User, stringToUserRole, USER_ROLES } from "../model/User";
 import userDatabase, { UserDatabase } from "../data/UserDatabase";
 import hashGenerator, { HashGenerator } from "../services/hashGenerator";
 import idGenerator, { IdGenerator } from "../services/idGenerator";
@@ -43,7 +43,7 @@ export class UserBusiness {
 
          const accessToken = this.tokenGenerator.generate({
             id,
-            role,
+            role
          });
          return { accessToken };
       } catch (error) {
@@ -106,6 +106,22 @@ export class UserBusiness {
       } catch (error) {
          throw new CustomError(error.statusCode, error.message)
       }
+   }
+
+   public async getAllUsers(role:string) {
+         if (stringToUserRole(role) !== USER_ROLES.ADMIN) {
+            throw new CustomError(401, "Only 'ADMIN' can access this")
+         }
+
+         const users = await this.userDatabase.getAllUsers()
+
+         return users.map(user => ({
+            id: user.getId,
+            name: user.getName,
+            email: user.getEmail,
+            role: user.getRole
+         }))
+      
    }
 }
 
