@@ -1,5 +1,6 @@
 import {UserBusiness} from "../src/business/UserBusiness"
 import { UserDatabase } from "../src/data/UserDatabase"
+import { USER_ROLES } from "../src/model/User"
 import hashGeneratorMock from "./mocks/hashGeneratorMock"
 import idGeneratorMock from "./mocks/idGeneratorMock"
 import tokenGeneratorMock from "./mocks/tokenGeneratorMock"
@@ -134,6 +135,40 @@ describe("UserBusiness", () => {
                 expect(getUserById).toHaveBeenCalledWith("123")
                 expect(result).toEqual({
                     id: result.id ,
+                    name: result.name,
+                    email: result.email,
+                    role: result.role
+                })
+            } catch (error) {
+                console.log(error.message)
+            }
+        })
+    })
+
+    describe("getAllusers", () => {
+        test("Catch error if user isn´t 'ADMIN'", async () => {
+            expect.assertions(2)
+
+            try {
+                await userBusinessMock.getAllUsers(USER_ROLES.NORMAL)                
+            } catch (error) {
+                expect(error.statusCode).toBe(401)
+                expect(error.message).toBe("Only 'ADMIN' can access this")
+            }
+        })
+
+        test("Return all users if everything is rigth", async () => {
+            expect.assertions(2)
+
+            try {
+                const getAllUser = jest.fn(
+                    (role:USER_ROLES) => userBusinessMock.getAllUsers(role)
+                )
+                const [result] = await getAllUser(USER_ROLES.ADMIN)  
+                
+                expect(getAllUser).toHaveBeenCalledWith(USER_ROLES.ADMIN)
+                expect(result).toContainEqual({
+                    id: result.id,
                     name: result.name,
                     email: result.email,
                     role: result.role
